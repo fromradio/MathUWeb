@@ -1,3 +1,15 @@
 {% extends "home/base.html" %}
 
 {%block header%}COPT{%endblock%}
+
+{%block content%}
+<ul>
+{%for chapter in chapters%}
+<li>
+<a class="chapter" href="{%url 'copt:chapter' chapter.name %}">
+{{chapter.name}}
+</a>
+</li>
+{%endfor%}
+</ul>
+{%endblock%}
