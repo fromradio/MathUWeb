@@ -1,0 +1,19 @@
+{%extends "home/base.html"%}
+
+{%block header%}MathU{%endblock%}
+
+{%block content%}
+<div class="subtitle">
+Meet MathU
+</div>
+<p> MathU is an academic organization working on applied mathematics. Nowadays, mathematics has become more and more powerful and useful in various fields. Especially applied mathematics which includes optimization, finite element method and many other fields has been successfully applied on many other research areas like machine learning, biology... However, the gap between mathematics researchers and other researchers still exists. We aim at introduction mathematics in an interesting and useful way. </p>
+
+<div class="subtitle">
+Projects
+</div>
+<ul>
+{% for project in project_list %}
+<li><a href="">{{project.title}}</li>
+{%endfor%}
+</ul>
+{%endblock%}

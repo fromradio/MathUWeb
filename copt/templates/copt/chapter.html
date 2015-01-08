@@ -1,0 +1,16 @@
+{%extends "home/base.html"%}
+
+{%block header%}{{chapter.name}}{%endblock%}
+
+{%block content%}
+{%for item in item_list %}
+<div class="item">
+<div class="itemname">
+<p class="itemname">{{item.name}}</p>
+</div>
+<div class="itemdescription">
+<p class="itemdescription">{{item.description}}</p>
+</div>
+</div>
+{%endfor%}
+{%endblock%}

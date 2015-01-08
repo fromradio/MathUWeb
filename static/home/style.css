@@ -1,0 +1,76 @@
+body{
+	margin:auto;
+	width:1000px;
+}
+
+div{
+	font-family:Arial,sans-serif;
+}
+
+div.container{
+	width:1000px;
+}
+
+div.title{
+	padding-top:40px;
+	padding-bottom:40px;
+	text-align:center;
+	font-size:45px;
+	background-color: #E8D7B6;
+}
+
+div.content{
+	margin-top: 50px;
+	padding-bottom: 50px;
+}
+
+div.subtitle{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-size:30px;
+	font-style: bold;	
+}
+
+div.item{
+	margin-top: 5px;
+	padding-top: 0px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
+	border-radius: 8px;
+}
+
+div.itemname{
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-bottom: 10px;
+	margin: auto;
+	background-color: #E2FCFC;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+}
+
+div.itemdescription{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin: auto;
+}
+
+p{
+	margin:auto;
+	font-size: 20px;
+	color: black;
+}
+
+p.itemname{
+	font-family: "Droid Sans Mono", Inconsolata, Courier, monospace;
+	padding-left: 10px;
+	font-size: 18px;
+	color: #32373B;
+	word-wrap: break-word;
+}
+
+p.itemdescription{
+	padding-left: 20px;
+	font-size: 12px;
+}
