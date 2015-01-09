@@ -14,8 +14,8 @@ class Introduction(models.Model):
 	chapter = models.ForeignKey(Chapter)
 	content = models.CharField(max_length=5000)
 	def __unicode__(self):
-		return chapter.name
-		
+		return "introduction"
+
 class Item(models.Model):
 	chapter = models.ForeignKey(Chapter)
 	name = models.CharField(max_length=200)
