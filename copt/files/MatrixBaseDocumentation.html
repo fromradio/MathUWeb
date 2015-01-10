@@ -1,0 +1,513 @@
+<div class ="chaptername">
+	MatrixBase
+</div>
+
+<div class ="introduction">
+	This is introduction.
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	MatrixBase()
+	</div>
+	<div class = "description">
+		This is the default constructor of the MatrixBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	MatrixBase(const index m, const index n, const scalar* data=NULL)
+	</div>
+	<div class = "description">
+		Construct a MatrixBase with m rows and n columns.If data is NULL, construct a zero MatrixBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	MatrixBase(const MatrixBase& mat)
+	</div>
+	<div class = "description">
+		Use this to copy a MatrixBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	~MatrixBase()
+	</div>
+	<div class = "description">
+		This is the deconstructor of the MatrixBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	const index&		rows() const
+	</div>
+	<div class = "description">
+		Find how many rows are there of the MatrixBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	const index& 		cols() const
+	</div>
+	<div class = "description">
+		Find how many columns are there of the MatrixBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	scalar& operator() ( const index i , const index j)
+	</div>
+	<div class = "description">
+		Find the element at the i-th row and the j-th colunm of the MatrixBase. Return a scalar. 
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	const scalar& operator() ( const index i, const index j) const
+	</div>
+	<div class = "description">
+		This is the same function as "scalar& operator() ( const index i , const index j)".
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	const scalar& data( const index i ) const
+	</div>
+	<div class = "description">
+		Get the i-th element of Array form of the MatrixBase. Return a scalar. 
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	Vector row( const index num )
+	</div>
+	<div class = "description">
+		Obtain the specific row of the MatrixBase. Return a Vector. 
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	const Vector row( const index num ) const
+	</div>
+	<div class = "description">
+		This is the same function as "Vector row( const index num )".
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	Vector col( const index num )
+	</div>
+	<div class = "description">
+		Obtain the specific column of the MatrixBase. Return a Vector. 
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	const Vector col( const index num ) const
+	</div>
+	<div class = "description">
+		This is the same function as "Vector col( const index num )".
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	void set ( const index i , const scalar value )
+	</div>
+	<div class = "description">
+		Set the i-th element of Array form of the MatrixBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	void resize ( index m , index n )
+	</div>
+	<div class = "description">
+		Resize rows and columns of the matrix.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	void setSymmetricFlag( bool sym )
+	</div>
+	<div class = "description">
+		Set symmetrix flag of the matrix which shows whether the matrix is symmetrix.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	bool isSymmetric() const
+	</div>
+	<div class = "description">
+		Judge whether the matrix is symmetrix. Return true if it is, false if not.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	void setTransposeFlag( bool sym )
+	</div>
+	<div class = "description">
+		Set transpose flag of the matrix which shows whether the matrix can be transposed.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	bool isTranspose() const
+	</div>
+	<div class = "description">
+		Judge whether the matrix can be transposed. Return true if yes, false if not.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	MatrixBase& operator= ( const MatrixBase& mat )
+	</div>
+	<div class = "description">
+		Use this to copy a MatrixBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	MatrixBase operator+ (const MatrixBase& mat)
+	</div>
+	<div class = "description">
+		This is the summation operation of MatrixBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	MatrixBase operator- (const MatrixBase& mat)
+	</div>
+	<div class = "description">
+		This is the subtraction operation of MatrixBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	VectorBase<scalar,index> operator* ( const VectorBase<scalar,index>& vec ) const
+	</div>
+	<div class = "description">
+		This is the multiplication operation between MatrixBase and VectorBase. Return a VectorBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		MatrixBase operator* ( const MatrixBase& mat ) const
+	</div>
+	<div class = "description">
+		This is the multiplication operation between MatrixBase and MatrixBase. Return a MatrixBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		friend MatrixBase operator* (const scalar s,const MatrixBase& mat)
+	</div>
+	<div class = "description">
+		This is the multiplication operation between a scalar and a MatrixBase. Return a MatrixBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		friend MatrixBase operator* (const MatrixBase& mat,const scalar s)
+	</div>
+	<div class = "description">
+		This is the same function as "friend MatrixBase operator* (const scalar s,const MatrixBase& mat)".
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		MatrixBase transpose() const
+	</div>
+	<div class = "description">
+		This is the transpose operation of MatrixBase. Return the transposed MatrixBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		Vector transMulti( const Vector& vec ) const
+	</div>
+	<div class = "description">
+		This is the transpose multiplication operation between MatrixBase and VectorBase. Transopose the MatrixBase and multiply it with the VectorBase. Return a VectorBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		MatrixBase transMulti(const MatrixBase& mat) const
+	</div>
+	<div class = "description">
+		This is the transpose multiplication operation between MatrixBase and MatrixBase. Transopose the MatrixBase and multiply it with the given MatrixBase. Return a MatrixBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		friend std::ostream& operator<<(std::ostream& os,const MatrixBase& mat)
+	</div>
+	<div class = "description">
+		This is an operator used to print MatrixBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		Vector lapackSolve( const Vector& vec )
+	</div>
+	<div class = "description">
+		----------------
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		Vector solve( const Vector& vec )
+	</div>
+	<div class = "description">
+		This is the same function as "Vector lapackSolve( const Vector& vec )".
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		Vector leastSquareSolve( const Vector& vec)
+	</div>
+	<div class = "description">
+		---------------
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		static MatrixBase identity(index m,index n)
+	</div>
+	<div class = "description">
+		Construct an m-by-n MatrixBase with 1's on the diagonal and zeros elsewhere.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		static MatrixBase identity(index m,index n,const scalar s)
+	</div>
+	<div class = "description">
+		Construct an m-by-n MatrixBase with s's on the diagonal and zeros elsewhere.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		void blockFromMatrix(
+		    const MatrixBase& mat,
+		    const std::set<index>& rownums,
+		    const std::set<index>& colnums)
+	</div>
+	<div class = "description">
+		Block matrix form a given matrix with specific row numbers and column numbers.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		void columnBlockFromMatrix(
+		    const MatrixBase& mat,
+		    const std::set<index>& colnums)
+	</div>
+	<div class = "description">
+		Block matrix from a given matrix with just columns.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		void rowBlockFromMatrix(
+		    const MatrixBase& mat,
+		    const std::set<index>& rownums)
+	</div>
+	<div class = "description">
+		Block matrix from a given matrix with just rows.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		void blockFromMatrix(
+		    const MatrixBase& mat,
+		    const std::vector<index>& rownums,
+		    const std::vector<index>& colnums)
+	</div>
+	<div class = "description">
+		Block matrix from a given matrix while order is not considered.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		template<class InputIterator>
+	    void blockFromMatrix(
+		    const MatrixBase& mat,
+		    const InputIterator& rowbegin,
+		    const InputIterator& rowend,
+		    const InputIterator& colbegin,
+		    const InputIterator& colend )
+	</div>
+	<div class = "description">
+		Block matrix using iterator. Block matrix with rows from rowbegin to rowend and colunms from colbegin to colend.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		void columnBlockFromMatrix(
+		    const MatrixBase& mat,
+		    const std::vector<index>& colnums)
+	</div>
+	<div class = "description">
+		Block matrix from a given matrix with just specific columns while order is not considered.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		template<class InputIterator>
+	    void columnBlockFromMatrix(
+		    const MatrixBase& mat,
+		    const InputIterator& colbegin,
+		    const InputIterator& colend)
+	</div>
+	<div class = "description">
+		Block matrix from a given matrix with columns from colbegin to colend.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		void rowBlockFromMatrix(
+		    const MatrixBase& mat,
+		    const std::vector<index>& rownums)
+	</div>
+	<div class = "description">
+		Block matrix from a given matrix with just specific rows while order is not considered.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		template<class InputIterator>
+	    void rowBlockFromMatrix(
+		    const MatrixBase& mat,
+		    const InputIterator& rowbegin,
+		    const InputIterator& rowend)
+	</div>
+	<div class = "description">
+		Block matrix from a given matrix with rows from rowbegin to rowend.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		void combineAlongRow(
+		    const MatrixBase& m1,
+		    const MatrixBase& m2)
+	</div>
+	<div class = "description">
+		This is a function used to combine two matrix along row direction. Column numbers of the two matrix must be equal.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		void combineAlongColumn(
+		    const MatrixBase& m1,
+		    const MatrixBase& m2)
+	</div>
+	<div class = "description">
+		This is a function used to combine two matrix along colunm direction. Row numbers of the two matrix must be equal.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		static inline void stCombineAlongRow(
+		    const MatrixBase& m1,
+		    const MatrixBase& m2,
+		    MatrixBase& m)
+	</div>
+	<div class = "description">
+		This is a function used to combine two matrix along row direction and it takes output as a parameter. Column numbers of the two matrix must be equal.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		static inline void stCombineAlongColumn(
+		    const MatrixBase&m1,
+		    const MatrixBase& m2,
+		    MatrixBase& m)
+	</div>
+	<div class = "description">
+		This is a function used to combine two matrix along colunm direction and it takes output as a parameter. Row numbers of the two matrix must be equal.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		void setRandom( const index rows, const index cols)
+	</div>
+	<div class = "description">
+		Set a random matrix with given rows and cols.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		static inline MatrixBase random( const index rows, const index cols)
+	</div>
+	<div class = "description">
+		This is the same function as "void setRandom( const index rows, const index cols)".
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		void mtm(MatrixBase& mat) const
+	</div>
+	<div class = "description">
+		This is a function used to compute A^TA of a given matrix A.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		podscalar operationNorm() const
+	</div>
+	<div class = "description">
+		This is a function used to compute the operation norm.
+	</div>
+</div>

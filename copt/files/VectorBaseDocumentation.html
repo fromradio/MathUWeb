@@ -1,0 +1,417 @@
+<div class ="chaptername">
+	VectorBase
+</div>
+
+<div class ="introduction">
+	This is introduction.
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	VectorBase()
+	</div>
+	<div class = "description">
+		This is the default constructor of the VectorBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+	    VectorBase( const index size , scalar* data = NULL )
+	</div>
+	<div class = "description">
+        Construct a VectorBase with specific length.If data is NULL, construct a zero VectorBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+	    VectorBase ( const VectorBase& vec )
+	</div>
+	<div class = "description">
+        Copy a VectorBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+	    VectorBase( const index size , const referred_array& tag , scalar* data ,const index inter = 1)
+	</div>
+	<div class = "description">
+        -----
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+	    VectorBase( const index size , const referred_array& tag , const scalar* data ,const index inter = 1)
+	</div>
+	<div class = "description">
+        -----
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        VectorBase(const std::vector<scalar>& vec)
+	</div>
+	<div class = "description">
+        Transport vector in stdlib to VectorBase in COPT.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        VectorBase(const Eigen::Matrix<scalar,Eigen::Dynamic,1>& vec)
+	</div>
+	<div class = "description">
+        Transport one-dimensional Matrix in Eigen to VectorBase in COPT.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	~VectorBase()
+	</div>
+	<div class = "description">
+		This is the deconstructor of the VectorBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        VectorBase& operator= (const VectorBase& vec )
+	</div>
+	<div class = "description">
+        Use this to copy a VectorBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        scalar& operator() (const index i )
+	</div>
+	<div class = "description">
+        Find the i-th element of a VectorBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        const scalar& operator() (const index i )const
+	</div>
+	<div class = "description">
+        Find the i-th element of a VectorBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        bool operator< (const VectorBase& vec)const
+	</div>
+	<div class = "description">
+        This is operator< of VectorBase.Return true if every element of the left VectorBase is smaller than corresponding element of the right one, return false otherwise.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        bool operator< (const scalar s)const
+	</div>
+	<div class = "description">
+        This is operator< of VectorBase.Return true if every element of the VectorBase is smaller than the given scalar s, return false otherwise.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        bool operator<=(const VectorBase& vec)const
+	</div>
+	<div class = "description">
+        This is operator<= of VectorBase.Return true if every element of the left VectorBase is not larger than corresponding element of the right one, return false otherwise.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        bool operator<=(const scalar s)const
+	</div>
+	<div class = "description">
+        This is operator<= of VectorBase.Return true if every element of the left VectorBase is not larger than the given scalar s, return false otherwise.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        bool operator> (const VectorBase& vec)const
+	</div>
+	<div class = "description">
+        This is operator> of VectorBase.Return true if every element of the left VectorBase is larger than corresponding element of the right one, return false otherwise.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        bool operator> (const scalar s)const
+	</div>
+	<div class = "description">
+        This is operator> of VectorBase.Return true if every element of the left VectorBase is larger than the given scalar s, return false otherwise.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        bool operator>=(const VectorBase& vec)const
+	</div>
+	<div class = "description">
+        This is operator>= of VectorBase.Return true if every element of the left VectorBase is not smaller than corresponding element of the right one, return false otherwise.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        bool operator>=(const scalar s)const
+	</div>
+	<div class = "description">
+        This is operator>= of VectorBase.Return true if every element of the left VectorBase is not smaller than the given scalar s, return false otherwise.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        bool operator==(const VectorBase& vec)const
+	</div>
+	<div class = "description">
+        This is operator== of VectorBase.Return true if every element of the left VectorBase is equal to corresponding element of the right one, return false otherwise.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        bool operator==(const scalar s)const
+	</div>
+	<div class = "description">
+        This is operator== of VectorBase.Return true if every element of the left VectorBase is equal to the given scalar s, return false otherwise.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        bool operator!=(const VectorBase& vec)const
+	</div>
+	<div class = "description">
+        This is operator!= of VectorBase.Return true if at least one element of the VectorBase is not equal to corresponding element of the right one, return false otherwise.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        bool operator!=(const scalar s)const
+	</div>
+	<div class = "description">
+        This is operator!= of VectorBase.Return true if at least one element of the left VectorBase is not equal to the given scalar s, return false otherwise.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        podscalar squaredNorm() const
+	</div>
+	<div class = "description">
+        Calculate the square norm of the VectorBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        podscalar absNorm() const
+	</div>
+	<div class = "description">
+        Calculate the abs norm of the VectorBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        podscalar normalize()
+	</div>
+	<div class = "description">
+        This function normalizes current vector and returns previous norm.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        scalar dot(const VectorBase& vec) const
+	</div>
+	<div class = "description">
+        This is the dot operation of VectorBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        void scale(scalar s)
+	</div>
+	<div class = "description">
+        -------------
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        VectorBase operator* (scalar s)
+	</div>
+	<div class = "description">
+        Use this to multiply a VectorBase with a scalar. Return a VectorBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        friend VectorBase operator* (scalar s,const VectorBase& vec)
+	</div>
+	<div class = "description">
+        This is the same function as "VectorBase operator* (scalar s)". 
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        VectorBase operator+ (const VectorBase& vec) const
+	</div>
+	<div class = "description">
+        This is the summation operation of VectorBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        VectorBase operator- (const VectorBase& vec) const
+	</div>
+	<div class = "description">
+        This is the subtraction operation of VectorBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        VectorBase operator- () const
+	</div>
+	<div class = "description">
+        This is a function used to calculate Anti vector.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        friend std::ostream& operator<<(std::ostream& os,const VectorBase& vec)
+	</div>
+	<div class = "description">
+        ----------------
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        static VectorBase vecE(index size,index i)
+	</div>
+	<div class = "description">
+        This function generates a VectorBase with specific size whose i-th element is 1 while others are 0. 
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        static VectorBase vecE(index size,index i,const scalar s)
+	</div>
+	<div class = "description">
+        This function generates a VectorBase with specific size whose i-th element is s while others are 0. 
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        MatrixBase<scalar,index> mulTrans(const VectorBase& vec) const
+	</div>
+	<div class = "description">
+        This is the transpose operation of VectorBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        VectorBase transMul(const MatrixBase<scalar,index>& mat) const
+	</div>
+	<div class = "description">
+        This function transposes a VectorBase and multiplies it with a Matrix.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        VectorBase block(const std::set<index>& indices)const
+	</div>
+	<div class = "description">
+        ------------
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        void blockFromVector(const VectorBase& vec,const std::set<index>& indices)
+	</div>
+	<div class = "description">
+        ------------
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        VectorBase block(const std::vector<index>& indices) const
+	</div>
+	<div class = "description">
+        ------------
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        void blockFromVector(const VectorBase& vec,const std::vector<index>& indices)
+	</div>
+	<div class = "description">
+        ------------
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        void combine(
+		const VectorBase& v1,
+		const VectorBase& v2)
+	</div>
+	<div class = "description">
+        This is a function used to combine two vectors.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        static inline void stCombine(
+		const VectorBase& v1,
+		const VectorBase& v2,
+		VectorBase& v)
+	</div>
+	<div class = "description">
+        This is a function used to combine two vectors and it takes output as a parameter.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        static inline VectorBase random( const index i )
+	</div>
+	<div class = "description">
+        This function generates a random VectorBase with size i.
+	</div>
+</div>

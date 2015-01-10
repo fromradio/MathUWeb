@@ -3,6 +3,11 @@
 {%block header%}{{chapter.name}}{%endblock%}
 
 {%block content%}
+{%for intro in intro_list %}
+<div class="introduction">
+{{intro.content}}
+</div>
+{%endfor%}
 {%for item in item_list %}
 <div class="item">
 <div class="itemname">

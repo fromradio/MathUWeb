@@ -8,4 +8,5 @@ def index(request):
 def chapter(request,chapter_name):
 	chap = get_object_or_404(Chapter,name=chapter_name)
 	item_list = chap.item_set.all()
-	return render(request,'copt/chapter.html',{'item_list':item_list,'chapter':chap})
+	introduction = chap.introduction_set.all()
+	return render(request,'copt/chapter.html',{'intro_list':introduction,'item_list':item_list,'chapter':chap})
