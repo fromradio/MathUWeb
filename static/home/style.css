@@ -4,17 +4,27 @@
 	/*src: url('../fonts/Inconsolata-Regular.ttf');*/
 }
 
+@font-face{
+	font-family: 'bree serif';
+	src: url('../fonts/BreeSerif-Regular.otf');
+}
+
+/*@import url(http://fonts.googleapis.com/css?family=Droid+Sans+Mono);*/
+
 body{
 	margin:auto;
 	width:1000px;
+	font-family: "Droid Sans Mono", "bree serif";
+	text-align: justify;
 }
 
 div{
-	font-family:Arial,sans-serif;
+	/*font-family:Arial,sans-serif;*/
 }
 
 div.container{
 	width:1000px;
+	/*padding: 20px;*/
 }
 
 div.title{
@@ -26,6 +36,7 @@ div.title{
 }
 
 div.content{
+	margin-left: 20px;
 	margin-top: 50px;
 	padding-bottom: 50px;
 }

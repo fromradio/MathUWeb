@@ -2,13 +2,17 @@ import string
 import urllib2
 import re
 from copt.models import Chapter
+from home.models import Project
 
 def construct( filename ):
 	text = open(filename).read()
 	classname = re.search(r'"chaptername".*?>\s*(.*?)\s*</div>',text,re.S).group(1)
-	chapter = Chapter.objects.get(name=classname)
-	if not chapter:
-		chapter = Chapter(name=classname)
+	copt = Project.objects.get(title="COPT")
+	print copt.chapter_set.all()
+	if copt.chapter_set.all().filter(name=classname).exists():
+		chapter = copt.chapter_set.all().get(name=classname)
+	else:
+		chapter = copt.chapter_set.all().create(name=classname)
 	intro = re.search(r'"introduction".*?>\s*(.*?)\s*</div>',text,re.S)
 	if intro:
 		chapter.introduction_set.all().delete()
