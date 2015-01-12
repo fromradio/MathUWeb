@@ -5,7 +5,9 @@
 {%block content%}
 {%for intro in intro_list %}
 <div class="introduction">
+{% autoescape off %}
 {{intro.content}}
+{% endautoescape %}
 </div>
 {%endfor%}
 {%for item in item_list %}

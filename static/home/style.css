@@ -86,6 +86,15 @@ p{
 	color: black;
 }
 
+p.introductin{
+	font-family: Arial;
+}
+
+p.introduction span{
+	font-family: Inconsolata;
+	color: red;
+}
+
 p.itemname{
 	font-family: Inconsolata;
 	padding-left: 10px;
