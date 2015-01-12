@@ -1,9 +1,14 @@
+{%extends "home/base.html"%}
+
+{%block header%}{{chapter.name}}{%endblock%}
+
+{%block content%}
 <div class ="chaptername">
 	VectorBase
 </div>
 
 <div class ="introduction">
-	<p class = "introduction"> <span>VectorBase</span> is one of the base mathematical classes in open source library COPT. <span>VectorBase</span> </p>
+	<p class = "introduction"> <span>VectorBase</span> is one of the base mathematical classes in open source library COPT. <span>VectorBase</span> describes a basic type vector. A vector is a multiple dimensional array with a number of arithmetic operations including summation, subtraction, multiplication etc. This class derives directly from another basic type called <span>Array</span> and also takes <span>scalar</span> and <span>index</span> as template. </p>
 </div>
 
 <div class = "detail">
@@ -11,7 +16,7 @@
     	VectorBase()
 	</div>
 	<div class = "description">
-		This is the default constructor of the VectorBase.
+		The default constructor of VectorBase. A zero-dimensional vector will be generated as default.
 	</div>
 </div>
 
@@ -415,3 +420,4 @@
         This function generates a random VectorBase with size i.
 	</div>
 </div>
+{%endblock%}

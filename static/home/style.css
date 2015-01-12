@@ -37,6 +37,7 @@ div.title{
 
 div.content{
 	margin-left: 20px;
+	margin-right: 20px;
 	margin-top: 50px;
 	padding-bottom: 50px;
 }
@@ -48,20 +49,27 @@ div.subtitle{
 	font-style: bold;	
 }
 
+div.chaptername{
+	font-size: 30px;
+	font-family: Times;
+	margin-left: -10px;
+	margin-bottom: 20px;
+}
+
 div.introduction{
 
 }
 
-div.item{
+div.detail{
 	margin-top: 20px;
 	padding-top: 0px;
-	/*border-style: solid;*/
 	border-width: 2px;
 	border-color: black;
 	border-radius: 8px;
+
 }
 
-div.itemname{
+div.definition{
 	padding-top: 10px;
 	padding-left: 10px;
 	padding-bottom: 10px;
@@ -72,9 +80,14 @@ div.itemname{
 	/*border-bottom-width: 2px;*/
 	border-radius: 8px;
 	/*border-top-right-radius: 8px;*/
+	font-family: Inconsolata;
+	padding-left: 10px;
+	font-size: 20px;
+	color: #32373B;
+	word-wrap: break-word;
 }
 
-div.itemdescription{
+div.description{
 	padding-top: 10px;
 	padding-bottom: 5px;
 	margin: auto;
@@ -86,7 +99,7 @@ p{
 	color: black;
 }
 
-p.introductin{
+p.introduction{
 	font-family: Arial;
 }
 
