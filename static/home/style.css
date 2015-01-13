@@ -91,6 +91,7 @@ div.description{
 	padding-top: 10px;
 	padding-bottom: 5px;
 	margin: auto;
+	font-size: 18px;
 }
 
 p{
@@ -119,4 +120,16 @@ p.itemname{
 p.itemdescription{
 	padding-left: 20px;
 	font-size: 16px;
+}
+
+p.paragraph{
+	font-family: Arial;
+	font-weight: bold;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-left: -5px;
+}
+
+p.arg{
+	font-size: 18px;
 }

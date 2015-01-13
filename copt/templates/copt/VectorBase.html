@@ -22,10 +22,15 @@
 
 <div class = "detail">
 	<div class = "definition">
-	    VectorBase( const index size , scalar* data = NULL )
+	    VectorBase(const index size, scalar *data = nullptr)
 	</div>
 	<div class = "description">
-        Construct a VectorBase with specific length.If data is NULL, construct a zero VectorBase.
+        Constructor for generating a vector with specific length and a given array. A zero vector is generated if given array is a nullptr.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg">size: The size of the vector</p>
+        <p class = "arg">data: The pointer to the array of data. nullptr is used as default.
 	</div>
 </div>
 
@@ -34,25 +39,25 @@
 	    VectorBase ( const VectorBase& vec )
 	</div>
 	<div class = "description">
-        Copy a VectorBase.
+        Copy constructor from a given vector vec. The vector will still be a reffered vector if vec is one. Both vectors point to the same array. Otherwise the data will be copied.
 	</div>
 </div>
 
 <div class = "detail">
 	<div class = "definition">
-	    VectorBase( const index size , const referred_array& tag , scalar* data ,const index inter = 1)
+	    VectorBase( const index size, const referred_array& tag, scalar* data, const index inter = 1 )
 	</div>
 	<div class = "description">
-        -----
+        Constructor of a referred vector. Referred vector is a special kind of vector which does not have its own data. The data is stored somewhere else. As an instance, it is not convenient to construct another vector when representating a column or a row of a matrix. But it is efficient just referred to the data. Here inter is the interval between two elements.
 	</div>
 </div>
 
 <div class = "detail">
 	<div class = "definition">
-	    VectorBase( const index size , const referred_array& tag , const scalar* data ,const index inter = 1)
+	    VectorBase( const index size, const referred_array& tag, const scalar* data, const index inter = 1 )
 	</div>
 	<div class = "description">
-        -----
+        The same as above constructor.
 	</div>
 </div>
 
@@ -61,16 +66,7 @@
         VectorBase(const std::vector<scalar>& vec)
 	</div>
 	<div class = "description">
-        Transport vector in stdlib to VectorBase in COPT.
-	</div>
-</div>
-
-<div class = "detail">
-	<div class = "definition">
-        VectorBase(const Eigen::Matrix<scalar,Eigen::Dynamic,1>& vec)
-	</div>
-	<div class = "description">
-        Transport one-dimensional Matrix in Eigen to VectorBase in COPT.
+        Constructor from std::vector vec from C++ standard libraray. The size is set as the size of std::vector and the data is the same as given vec.
 	</div>
 </div>
 
@@ -79,25 +75,25 @@
     	~VectorBase()
 	</div>
 	<div class = "description">
-		This is the deconstructor of the VectorBase.
+		The deconstructor of VectorBase.
 	</div>
 </div>
 
 <div class = "detail">
 	<div class = "definition">
-        VectorBase& operator= (const VectorBase& vec )
+        VectorBase& operator=( const VectorBase& vec )
 	</div>
 	<div class = "description">
-        Use this to copy a VectorBase.
+		Copy assignment of VectorBase. The functionality is the same as copy constructor. All data is copied.
 	</div>
 </div>
 
 <div class = "detail">
 	<div class = "definition">
-        scalar& operator() (const index i )
+        scalar& operator()(const index i )
 	</div>
 	<div class = "description">
-        Find the i-th element of a VectorBase.
+		Matlib-like data access of VectorBase. User can use operator() to access the i-th element of a given VectorBase vec. The syntax is simply vec(i) and out-of-range exception will be throwed if i is less than zero or no less than the size of vec. Note that the first element is with index 0 meaning that i is in range [0,size-1].
 	</div>
 </div>
 
@@ -106,7 +102,7 @@
         const scalar& operator() (const index i )const
 	</div>
 	<div class = "description">
-        Find the i-th element of a VectorBase.
+        Const access of element in VectorBase.
 	</div>
 </div>
 
@@ -115,7 +111,7 @@
         bool operator< (const VectorBase& vec)const
 	</div>
 	<div class = "description">
-        This is operator< of VectorBase.Return true if every element of the left VectorBase is smaller than corresponding element of the right one, return false otherwise.
+        Comparison of two VectorBase. Value true is returned if every element of the first VectorBase is smaller than the right one, false is returned otherwise.
 	</div>
 </div>
 
@@ -124,7 +120,7 @@
         bool operator< (const scalar s)const
 	</div>
 	<div class = "description">
-        This is operator< of VectorBase.Return true if every element of the VectorBase is smaller than the given scalar s, return false otherwise.
+        Comparison of a VectorBase and a scalar. Value true is returned if every element of the VectorBase is smaller than the given scalar s, false is returned otherwise.
 	</div>
 </div>
 
@@ -223,7 +219,7 @@
         podscalar squaredNorm() const
 	</div>
 	<div class = "description">
-        Calculate the square norm of the VectorBase.
+		Computation of the square of l2 norm of the VectorBase.
 	</div>
 </div>
 
@@ -232,7 +228,7 @@
         podscalar absNorm() const
 	</div>
 	<div class = "description">
-        Calculate the abs norm of the VectorBase.
+        Computation of the abs norm or l1 norm of the VectorBase.
 	</div>
 </div>
 
@@ -241,7 +237,7 @@
         podscalar normalize()
 	</div>
 	<div class = "description">
-        This function normalizes current vector and returns previous norm.
+		Normalizing the VectorBase and returning the norm of it.
 	</div>
 </div>
 
@@ -259,7 +255,7 @@
         void scale(scalar s)
 	</div>
 	<div class = "description">
-        -------------
+        Scaling the whole vector with a given scalar s. 
 	</div>
 </div>
 
@@ -268,7 +264,7 @@
         VectorBase operator* (scalar s)
 	</div>
 	<div class = "description">
-        Use this to multiply a VectorBase with a scalar. Return a VectorBase.
+		Computing the multiplication of the vector and a scalar s. Every element of the vector multiplies s.
 	</div>
 </div>
 
@@ -313,7 +309,7 @@
         friend std::ostream& operator<<(std::ostream& os,const VectorBase& vec)
 	</div>
 	<div class = "description">
-        ----------------
+        Overload of output stream of VectorBase. The output form is like [v[0],v[1],...,v[size-1]].
 	</div>
 </div>
 
@@ -355,37 +351,57 @@
 
 <div class = "detail">
 	<div class = "definition">
-        VectorBase block(const std::set<index>& indices)const
+        VectorBase block(const std::set&ltindex&gt&amp indices) const
 	</div>
 	<div class = "description">
-        ------------
+        Vector blocking of the vector. The indices of blocking vector are given in std::set&ltindex&gt from C++ standard library. Notice that the elements of std::set&ltindex&gt are placed in order.
 	</div>
 </div>
 
 <div class = "detail">
 	<div class = "definition">
-        void blockFromVector(const VectorBase& vec,const std::set<index>& indices)
+        VectorBase block(const std::vector&ltindex&gt&amp indices) const
 	</div>
 	<div class = "description">
-        ------------
+        Vector blocking of the vector. The indices are given std::vector&ltindex&gt from C++ standard library. Remember that the elements of std::vector&ltindex&gt are not forced to be in order. 
 	</div>
 </div>
 
 <div class = "detail">
 	<div class = "definition">
-        VectorBase block(const std::vector<index>& indices) const
+		template&ltclass InputIterator&gt</br>
+		VectorBase block(const index bs, InputIterator begin, InputIterator end) const
 	</div>
 	<div class = "description">
-        ------------
+		Another vector blocking method taking iterator as input. The begin iterator and end iterator are used as parameters. 
 	</div>
 </div>
 
 <div class = "detail">
 	<div class = "definition">
-        void blockFromVector(const VectorBase& vec,const std::vector<index>& indices)
+        void blockFromVector(const VectorBase& vec, const std::set&ltindex&gt& indices)
 	</div>
 	<div class = "description">
-        ------------
+        Blocking the vector from a given vector vec. The indices are given in std::set&ltindex&gt from C++ standard library.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+        void blockFromVector(const VectorBase& vec, const std::vector&ltindex&gt& indices)
+	</div>
+	<div class = "description">
+        Blocking the vector from a given vector vec. The indices are given in std::vector&ltindex&gt from C++ standard library.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		template&ltclass InputIterator&gt</br>
+		void blockFromVector(const VectorBase& vec, const index bs, InputIterator begin, InputIterator end)
+	</div>
+	<div class = "description">
+		Blocking the vector from a given vector vec. The begin and end iterator are given.
 	</div>
 </div>
 
