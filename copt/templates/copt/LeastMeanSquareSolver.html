@@ -1,0 +1,53 @@
+{%extends "home/base.html"%}
+
+{%block header%}{{chapter.name}}{%endblock%}
+
+{%block content%}
+<div class ="chaptername">
+	LeastMeanSquareSolver
+</div>
+
+<div class ="introduction">
+	<p class = "introduction"> <span>LeastMeanSquareSolver</span> is one of the solvers of least squares problems. <span>LeastMeanSquareSolver</span> solves the least squares problems using least mean squares algorithm which is a stochastic gradient descent method. This class derives directly from another class called <span>GeneralSolver</span> and takes <span>Problem</span> and <span>Time</span> as template.</p>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	LeastMeanSquareSolver(const Problem&amp s, const scalar mu = 0.01)
+	</div>
+	<div class = "description">
+		Initialization of the LeastMeanSquareSolver. 
+		<p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>s:</span> The least squares problem</p>
+        <p class = "arg"><span>mu:</span> The step size of least mean squares algorithm. 0.01 is used as default.</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	const Vector&amp result() const
+	</div>
+	<div class = "description">
+		Get the final result of LeastMeanSquareSolver. 
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The final result of the solver, a vector</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+	    scalar objective() const
+	</div>
+	<div class = "description">
+        Calculate the square of l2-norm of 'Ax - b' in order to see how well the problem is solved using least mean squares algorithm.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The square of l2-norm of 'Ax - b', a scalar</p>
+	</div>
+</div>
+{%endblock%}

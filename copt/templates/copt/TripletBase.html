@@ -1,0 +1,76 @@
+{%extends "home/base.html"%}
+
+{%block header%}{{chapter.name}}{%endblock%}
+
+{%block content%}
+<div class ="chaptername">
+	TripletBase
+</div>
+
+<div class ="introduction">
+	<p class = "introduction"> <span>TripletBase</span> is one of the base mathematical classes in open source library COPT. <span>TripletBase</span> describes a basic type triplet. A triplet is a set of three items, always used to store the sparse matrix. This struct takes <span>scalar</span> and <span>index</span> as template. </p>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	TripletBase(const index r, const index c, const Scalar v)
+	</div>
+	<div class = "description">
+		This is the only constructor of TripletBase.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>r:</span> Row index</p>
+        <p class = "arg"><span>c:</span> Column index</p>
+        <p class = "arg"><span>v:</span> Value</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	~TripletBase()
+	</div>
+	<div class = "description">
+		This is the deconstructor of TripletBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	const index&amp rowIndex() const
+	</div>
+	<div class = "description">
+		To get the row index.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> Row index</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	const index&amp columnIndex() const
+	</div>
+	<div class = "description">
+		To get the column index.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> Column index</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	const scalar&amp value() const
+	</div>
+	<div class = "description">
+		To get the value.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> Value</p>
+	</div>
+</div>
+{%endblock%}

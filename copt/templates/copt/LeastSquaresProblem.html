@@ -1,0 +1,100 @@
+{%extends "home/base.html"%}
+
+{%block header%}{{chapter.name}}{%endblock%}
+
+{%block content%}
+<div class ="chaptername">
+	LeastSquaresProblem
+</div>
+
+<div class ="introduction">
+	<p class = "introduction"> <span>LeastSquaresProblem</span> is one of the problem classes in open source library COPT. <span>LeastSquaresProblem</span> describes a least square problem. Briefly, a matrix A and a target vector b are given. We are supposed to find the optimal solution of 'Ax = b'. In other words, we need to minimize the l2-norm of 'Ax - b'. This class derives directly from another class called <span>VectorProblem</span> and also takes <span>kernal</span> as template. </p>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	LeastSquaresProblem(const Matrix&amp A, const Vector&amp b)
+	</div>
+	<div class = "description">
+		Initialization of the least squares problem. Notice that the row number of A must be equal to the size of b.
+		<p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>A:</span> The given coefficient matrix</p>
+        <p class = "arg"><span>b:</span> The given target vector</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+	    bool isValidInput(const Vector&amp x) const
+	</div>
+	<div class = "description">
+        Check whether the input is valid. This means that the column number of the given coefficient matrix A must be equal to the size of the parameter vector x to be find.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>x:</span> The parameter vector x to be find</p>
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> True if the input is valid, false otherwise.</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+	    bool isValid() const
+	</div>
+	<div class = "description">
+        Check whether the problem is a valid problem. This means that the row number of the given coefficient matrix A must be equal to the size of the given target vector b.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> True if the problem is a valid one, false otherwise.</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+	    const Matrix&amp matA() const
+	</div>
+	<div class = "description">
+        Get the coefficient matrix A of a least squares problem.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The coefficient matrix A</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+	    const Vector&amp obB() const
+	</div>
+	<div class = "description">
+        Get the target vector b of a least squares problem.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The target vector b</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+	    scalar objective(const Vector&amp x) const
+	</div>
+	<div class = "description">
+        Calculate the square of l2-norm of 'Ax - b' in order to see how well the problem is solved.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>x:</span> The parameter vector x</p>
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The square of l2-norm of 'Ax - b', a scalar</p>
+	</div>
+</div>
+{%endblock%}

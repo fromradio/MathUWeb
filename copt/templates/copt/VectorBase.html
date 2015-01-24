@@ -32,7 +32,7 @@
         <p class = "arg"><span>size:</span> The size of the vector</p>
         <p class = "arg"><span>data:</span> The pointer to the array of data. nullptr is used as default.</p>
 	</div>
-</div>
+</div> 
 
 <div class = "detail">
 	<div class = "definition">
@@ -57,7 +57,7 @@
         Parameters:
         </p>
         <p class = "arg"><span>size:</span> The size of the vector</p>
-        <p class = "arg"><span>[out]tag:</span> -------------The referred vector constructed</p>
+        <p class = "arg"><span>[out]tag:</span> The referred vector constructed</p>
         <p class = "arg"><span>data:</span> The pointer to the array of data</p>
         <p class = "arg"><span>inter:</span> The interval between two elements. 1 is used as default.</p>
 	</div>
@@ -134,7 +134,7 @@
 
 <div class = "detail">
 	<div class = "definition">
-        const scalar&amp operator() (const index i) const
+        const scalar&amp operator()(const index i) const
 	</div>
 	<div class = "description">
         Const access of element in VectorBase.
@@ -151,7 +151,7 @@
 
 <div class = "detail">
 	<div class = "definition">
-        bool operator&lt (const VectorBase&amp vec) const
+        bool operator&lt(const VectorBase&amp vec) const
 	</div>
 	<div class = "description">
         Comparison of two VectorBases. Value true is returned if every element of the first VectorBase is smaller than the right one, false is returned otherwise.
@@ -450,10 +450,10 @@
 
 <div class = "detail">
 	<div class = "definition">
-        VectorBase operator+ (const VectorBase&amp vec) const
+        VectorBase operator+(const VectorBase&amp vec) const
 	</div>
 	<div class = "description">
-        This is the summation operation of VectorBase. The corresponding elements of the two vector are added together.
+        This is the summation operation of VectorBase. The corresponding elements of the two vectors are added together.
         <p class= "paragraph">
         Parameters:
         </p>
@@ -467,7 +467,7 @@
 
 <div class = "detail">
 	<div class = "definition">
-        VectorBase operator- (const VectorBase&amp vec) const
+        VectorBase operator-(const VectorBase&amp vec) const
 	</div>
 	<div class = "description">
         This is the subtraction operation of VectorBase. Every element of the first vector substracts the corresponding element of the given one.
@@ -484,7 +484,7 @@
 
 <div class = "detail">
 	<div class = "definition">
-        VectorBase operator- () const
+        VectorBase operator-() const
 	</div>
 	<div class = "description">
         This is a function used to calculate Anti vector.
@@ -504,12 +504,12 @@
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>os:</span> -------------------</p>
+        <p class = "arg"><span>os:</span> The standard stream</p>
         <p class = "arg"><span>vec:</span> The given vector</p>
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> ----------------</p>
+        <p class = "arg"> The standard stream</p>
 	</div>
 </div>
 

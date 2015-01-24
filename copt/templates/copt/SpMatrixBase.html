@@ -1,0 +1,437 @@
+{%extends "home/base.html"%}
+
+{%block header%}{{chapter.name}}{%endblock%}
+
+{%block content%}
+<div class ="chaptername">
+	SpMatrixBase
+</div>
+
+<div class ="introduction">
+	<p class = "introduction"> <span>SpMatrixBase</span> is one of the base mathematical classes in open source library COPT. <span>SpMatrixBase</span> describes a basic type sparse matrix. This class takes <span>scalar</span> and <span>index</span> as template. </p>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	SpMatrixBase()
+	</div>
+	<div class = "description">
+		This is the default constructor of the SpMatrixBase. A 0-by-0 sparse matrix will be generated as default.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	SpMatrixBase(const index rows, const index cols, const index elesize, const index *colptr, const index *rowind, const scalar *vals)
+	</div>
+	<div class = "description">
+		Construct a SpMatrixBase with given parameters. Parameters' meanings are "the number of rows""the number of colunms""the number of elements""the col poSizeers""the indices of the rows""the values". 
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>rows:</span> The number of rows</p>
+        <p class = "arg"><span>cols:</span> The number of columns</p>
+        <p class = "arg"><span>elesize:</span> The number of elements</p>
+        <p class = "arg"><span>colptr:</span> The col poSizeers</p>
+        <p class = "arg"><span>rowind:</span> The indices of the rows</p>
+        <p class = "arg"><span>vals:</span> The values</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	SpMatrixBase(const SpMatrixBase&amp mat)
+	</div>
+	<div class = "description">
+		Copy constructor from a given SpMatrixBase.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>mat:</span> The sparse matrix to be copied</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	~SpMatrixBase()
+	</div>
+	<div class = "description">
+		The deconstructor of SpMatrixBase.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	void setSparseMatrix(const index rows, const index cols, const index elesize, const index *colptr, const index *rowind, const scalar *vals)
+	</div>
+	<div class = "description">
+		This is the traditional setter of the SpMatrixBase. 
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>rows:</span> The number of rows</p>
+        <p class = "arg"><span>cols:</span> The number of columns</p>
+        <p class = "arg"><span>elesize:</span> The number of elements</p>
+        <p class = "arg"><span>colptr:</span> The col poSizeers</p>
+        <p class = "arg"><span>rowind:</span> The indices of the rows</p>
+        <p class = "arg"><span>vals:</span> The values</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	SpMatrixBase&amp operator=(const SpMatrixBase&amp mat)
+	</div>
+	<div class = "description">
+		This is a operator used to copy a sparse matrix.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>mat:</span> The sparse matrix to be copied</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	void setFromTriplets(const index rows, const index cols, std::vector&ltTriplet&gt&amp triplets)
+	</div>
+	<div class = "description">
+		Set a sparse matrix from triplets.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>rows:</span> The number of rows</p>
+        <p class = "arg"><span>cols:</span> The number of columns</p>
+        <p class = "arg"><span>triplets:</span> The triplets stored the sparse matrix</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	template&ltclass InputIterator&gt
+	    void setFromTriplets(const index rows, const index cols, const InputIterator&amp begin, const InputIterator&amp end)
+	</div>
+	<div class = "description">
+		Set a sparse matrix from triplets iterator.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>rows:</span> The number of rows</p>
+        <p class = "arg"><span>cols:</span> The number of columns</p>
+        <p class = "arg"><span>begin:</span> The begin iterator</p>
+        <p class = "arg"><span>end:</span> The end iterator</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	template&ltclass InputIterator&gt
+	    void fastSetFromTriplets(const index rows, const index cols, const InputIterator&amp begin, const InputIterator&amp end)
+	</div>
+	<div class = "description">
+		Fast set a sparse matrix from triplets iterator (like mtx file).
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>rows:</span> The number of rows</p>
+        <p class = "arg"><span>cols:</span> The number of columns</p>
+        <p class = "arg"><span>begin:</span> The begin iterator</p>
+        <p class = "arg"><span>end:</span> The end iterator</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	void clear()
+	</div>
+	<div class = "description">
+		This is the function used to clear the data.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	const index&amp rows() const
+	</div>
+	<div class = "description">
+		This is the function used to get the row number.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The row number</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	const index&amp cols() const
+	</div>
+	<div class = "description">
+		This is the function used to get the colunm number.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The column number</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	const index&amp elementSize() const
+	</div>
+	<div class = "description">
+		This is the function used to get the element size.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The element size</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	const index* columnPointer() const
+	</div>
+	<div class = "description">
+		This is the function used to get the column poSizeer.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The column poSizeer</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	const index* rowIndex() const
+	</div>
+	<div class = "description">
+		This is the function used to get the row indices.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The row indices</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	const scalar* values() const
+	</div>
+	<div class = "description">
+		This is the function used to get the values.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The values</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	void scale(const scalar s)
+	</div>
+	<div class = "description">
+        Scaling the whole sparse matrix with a given scalar s. 
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>s:</span> The given scalar parameter</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	void neg()
+	</div>
+	<div class = "description">
+		This is the negative sign of the matrix.
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	const scalar&amp operator()(const index i, const index j) const
+	</div>
+	<div class = "description">
+		Data access of SpMatrixBase. Only const access is allowed.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>i:</span> The row index number of the element we want to get</p>
+        <p class = "arg"><span>j:</span> The column index number of the element we want to get</p>
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The (i+1,j+1) element of the sparse matrix</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	SpMatrixBase operator+(const SpMatrixBase&amp mat) const
+	</div>
+	<div class = "description">
+		This is the summation operation of SpMatrixBase. The corresponding elements of the two sparse matrixes are added together.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>mat:</span> The given sparse matrix</p>
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The operation result whose type is SpMatrixBase</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	SpMatrixBase operator-(const SpMatrixBase&amp mat) const
+	</div>
+	<div class = "description">
+		This is the subtraction operation of SpMatrixBase. Every element of the first sparse matrix substracts the corresponding element of the given one.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>mat:</span> The given sparse matrix</p>
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The operation result whose type is SpMatrixBase</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	SpMatrixBase operator-() const
+	</div>
+	<div class = "description">
+		This is the negative sign of SpMatrixBase.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> A SpMatrixBase</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	SpMatrixBase operator*(const SpMatrixBase&amp mat) const
+	</div>
+	<div class = "description">
+		This is the multiplication operation between two SpMatrixBases. Note that the column number of the first sparse matrix must be equal to the row number of the second one.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>mat:</span> The given sparse matrix</p>
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> A SpMatrixBase with m rows and n columns if row number of the first sparse matrix is m and column number of the second one is n.</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	Vector operator*(const Vector&amp vec) const
+	</div>
+	<div class = "description">
+		This is the multiplication operation between a SpMatrixBase and a Vector. Note that the column number of sparse matrix must be equal to the size of vector.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>vec:</span> The given vector</p>
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> A VectorBase of size m if the original SpMatrixBase is with m rows.</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	SpMatrixBase operator*(const scalar s) const
+	</div>
+	<div class = "description">
+		This is the multiplication operation between a SpMatrixBase and a Scalar. Every element of the sparse matrix multiplies a given scalar s.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>s:</span> The given scalar</p>
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> A SpMatrixBase</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	MatrixBase&ltscalar,index&gt toDenseMatrix() const
+	</div>
+	<div class = "description">
+		This is a function to transform a sparse matrix to a dense matrix.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> A dense matrix</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	VectorBase&ltscalar,index&gt solve(const VectorBase&ltscalar,index&gt&amp vec)
+	</div>
+	<div class = "description">
+		Solve a linear system described as "Ax = b".
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>vec:</span> The given vector b</p>
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The result VectorBase x</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	template&ltclass scalar,class index&gt
+        SpMatrixBase&ltscalar,index&gt operator*(const scalar s, const SpMatrixBase&ltscalar,index&gt&amp mat)
+
+	</div>
+	<div class = "description">
+		This is the multiplication operation between a Scalar and a SpMatrixBase. Every element of the sparse matrix multiplies the given scalar s.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>s:</span> The given scalar</p>
+        <p class = "arg"><span>mat:</span> The given sparse matrix</p>
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> A SpMatrixBase</p>		
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	template&ltclass scalar,class index,class T&gt
+        SpMatrixBase&ltscalar,index&gt operator*(const T s, const SpMatrixBase&ltscalar,index&gt&amp mat)
+
+	</div>
+	<div class = "description">
+		This is the multiplication operation between a T type variable and a SpMatrixBase. Every element of the sparse matrix multiplies the given T type s.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>s:</span> The T type variable</p>
+        <p class = "arg"><span>mat:</span> The given sparse matrix</p>
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> A SpMatrixBase</p>
+	</div>
+</div>
+{%endblock%}

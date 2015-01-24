@@ -1,0 +1,54 @@
+{%extends "home/base.html"%}
+
+{%block header%}{{chapter.name}}{%endblock%}
+
+{%block content%}
+<div class ="chaptername">
+	RecursiveLeastSquareSolver
+</div>
+
+<div class ="introduction">
+	<p class = "introduction"> <span>RecursiveLeastSquareSolver</span> is one of the solvers of least squares problems using recursive least squares algorithm. This class derives directly from another class called <span>GeneralSolver</span> and takes <span>Problem</span> and <span>Time</span> as template.</p>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	RecursiveLeastSquareSolver(const Problem&amp s, const scalar lam = 1, const scalar delta = 250)
+	</div>
+	<div class = "description">
+		Initialization of the RecursiveLeastSquareSolver. 
+		<p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>s:</span> The least squares problem</p>
+        <p class = "arg"><span>lam:</span> A parameter related to forgetting factor beta. 1 is used as default.</p>
+        <p class = "arg"><span>delta:</span> A parameter used to initialize matrix P in recursive least squares algorithm. 250 is used as default.</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	const Vector&amp result() const
+	</div>
+	<div class = "description">
+		Get the final result of RecursiveLeastSquareSolver. 
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The final result of the solver, a vector</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+	    scalar objective() const
+	</div>
+	<div class = "description">
+        Calculate the square of l2-norm of 'Ax - b' in order to see how well the problem is solved using recursive least squares algorithm.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The square of l2-norm of 'Ax - b', a scalar</p>
+	</div>
+</div>
+{%endblock%}

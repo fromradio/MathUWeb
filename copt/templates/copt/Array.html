@@ -1,0 +1,328 @@
+{%extends "home/base.html"%}
+
+{%block header%}{{chapter.name}}{%endblock%}
+
+{%block content%}
+<div class ="chaptername">
+    Array
+</div>
+
+<div class ="introduction">
+    <p class = "introduction"> <span>Array</span> describes a base class for basic dense data types used in open source library COPT like vector and matrix. The array can be independent or referred to an existing array. Array takes <span>scalar</span> and <span>index</span> as template. </p>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+	Array()
+    </div>
+    <div class = "description">
+        The default constructor of Array. A zero-dimensional array will be generated as default.
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+	Array(const index size, const scalar *data = nullptr, const index inter = 1)
+    </div>
+    <div class = "description">
+        Constructor for generating a standard array with a specific size, a given array and the interval of the pointer.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>size:</span> The size of the array</p>
+        <p class = "arg"><span>data:</span> The pointer to the array of data. 'nullptr' is used as default. When 'nullptr' is used, all elements will be initialized as zero.</p>
+        <p class = "arg"><span>inter:</span> The interval of the pointer. 1 is used as default.</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+	Array(const index size, const referred_array&amp arr, scalar *data, const index inter = 1)
+    </div>
+    <div class = "description">
+        Construct an array which refers to existing data. The size of the data and the pointer to the data are given. Besides the interval of array should be specified too.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>size:</span> The size of the array.</p>
+        <p class = "arg"><span>arr:</span> The trait of referred array. A consideration of C++ feature.</p>
+        <p class = "arg"><span>data:</span> The pointer to the array of data. nullptr is used as default.</p>
+        <p class = "arg"><span>inter:</span> The interval of the pointer. 1 is used as default.</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+	Array(const Array&amp arr)
+    </div>
+    <div class = "description">
+        Copy constructor from a given 'Array' <span>arr</span>. The array will automatically be a reffered array if <span>arr</span> is also one. Both 'Array's point to the same data. Otherwise the data will be copied.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>arr:</span> The given 'Array'.</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+	virtual ~Array()
+    </div>
+    <div class = "description">
+        The deconstructor of 'Array'. The constructed data will be automatically deconstructed.
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+	void clear()
+    </div>
+    <div class = "description">
+        This function is used to clear the array.
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+	scalar* dataPtr()
+    </div>
+    <div class = "description">
+        Access to data pointer for modification or other operations.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The pointer to the data</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+	const scalar* dataPtr() const
+    </div>
+    <div class = "description">
+        Const access to data pointer.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The pointer to the data</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+	void copy(const Array&amp arr)
+    </div>
+    <div class = "description">
+        Copy from another array. Unlike copy constructor, the array will not be a referred one.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>arr:</span> The array to be copied</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+	void swap(Array&amp arr)
+    </div>
+    <div class = "description">
+        Swap two arrays.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>arr:</span> The given array to swap with the original one.</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+	const index&amp size() const
+    </div>
+    <div class = "description">
+        Get the size of the array.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The size of the array</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+	bool isReferred() const
+    </div>
+    <div class = "description">
+        Judge whether the array is referred.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> True if the array is referred, false otherwise.</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+	index interval() const
+    </div>
+    <div class = "description">
+        Get the interval of the array.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The interval of the array</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+	void resize(const index size, const index inter = 1)
+    </div>
+    <div class = "description">
+        Resize the array to specific size. Notice that referred array is not allowed to be resized!
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>size:</span> New size of the array</p>
+        <p class = "arg"><span>inter:</span> The interval of the pointer. 1 is used as default.</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+	void reset(const index size, const index inter = 1)
+    </div>
+    <div class = "description">
+        Reset the array even if the array is a referred array.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>size:</span> New size of the array</p>
+        <p class = "arg"><span>inter:</span> The interval of the pointer. 1 is used as default.</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+	void setArray(const index size, const scalar *data, const index inter = 1)
+    </div>
+    <div class = "description">
+        Set the array with given size and data. Notice that referred array is not allowed to be reset!
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>size:</span> New size of the array</p>
+        <p class = "arg"><span>data:</span> The pointer to the array of data.</p>
+        <p class = "arg"><span>inter:</span> The interval of the pointer. 1 is used as default.</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+	void setArray(const Array&amp arr)
+    </div>
+    <div class = "description">
+        Set the array with given array. Notice that referred array is not allowed to be reset!
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>arr:</span> The given array</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+	void setReferredArray(const index size, scalar *data, const index inter = 1)
+    </div>
+    <div class = "description">
+        Set a referred array with given size and data. 
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>size:</span> New size of the array</p>
+        <p class = "arg"><span>data:</span> The pointer to the array of data.</p>
+        <p class = "arg"><span>inter:</span> The interval of the pointer. 1 is used as default.</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+	bool isValid() const
+    </div>
+    <div class = "description">
+        Judge whether the array is valid. The array is valid if and only if the template is valid scalar type: 'float', 'double', 'std::complex&ltfloat&gt' or 'std::complex&ltdouble&gt'
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> True if the array is valid, false otherwise.</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+	scalar&amp operator[](index i)
+    </div>
+    <div class = "description">
+        Matlib-like data access of Array. User can use operator[] to access the (i+1)-th element of a given Array arr. The syntax is simply arr(i) and out-of-range exception will be throwed if i is less than zero or no less than the size of arr. Note that the first element is with index 0 meaning that i is in range [0,size-1].
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>i:</span> The index number of the element we want to get</p>
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The (i+1)-th element of the array</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+	const scalar&amp operator[](index i) const
+    </div>
+    <div class = "description">
+        Const access of element in Array.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>i:</span> The index number of the element we want to get</p>
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The (i+1)-th element of the array</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+        Array&amp operator=(const Array&amp arr)
+    </div>
+    <div class = "description">
+        Copy assignment of Array. The functionality is the same as copy constructor. All data is copied.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>arr:</span> The array to be copied</p>
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> A vector copied from the given vec</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+        friend std::ostream&amp operator&lt&lt(std::ostream&amp os, const Array&amp arr)
+    </div>
+    <div class = "description">
+        Overload of output stream of Array. The output form is like [arr[0],arr[1],...,arr[size-1]].
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>os:</span> The standard stream</p>
+        <p class = "arg"><span>arr:</span> The given array</p>
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The standard stream</p>
+    </div>
+</div>
+{%endblock%}
