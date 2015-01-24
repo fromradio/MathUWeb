@@ -133,3 +133,7 @@ p.paragraph{
 p.arg{
 	font-size: 18px;
 }
+
+p.arg span{
+	color: blue;
+}
