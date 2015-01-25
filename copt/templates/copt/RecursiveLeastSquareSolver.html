@@ -16,13 +16,13 @@
     	RecursiveLeastSquareSolver(const Problem&amp s, const scalar lam = 1, const scalar delta = 250)
 	</div>
 	<div class = "description">
-		Initialization of the RecursiveLeastSquareSolver. 
+		Initialization of the 'RecursiveLeastSquareSolver'. 
 		<p class= "paragraph">
         Parameters:
         </p>
         <p class = "arg"><span>s:</span> The least squares problem</p>
-        <p class = "arg"><span>lam:</span> A parameter related to forgetting factor beta. 1 is used as default.</p>
-        <p class = "arg"><span>delta:</span> A parameter used to initialize matrix P in recursive least squares algorithm. 250 is used as default.</p>
+        <p class = "arg"><span>lam:</span> A parameter related to forgetting factor beta. '1' is used as default.</p>
+        <p class = "arg"><span>delta:</span> A parameter used to initialize matrix <span>P</span> in recursive least squares algorithm. '250' is used as default.</p>
 	</div>
 </div>
 
@@ -31,11 +31,11 @@
     	const Vector&amp result() const
 	</div>
 	<div class = "description">
-		Get the final result of RecursiveLeastSquareSolver. 
+		Get the final result of 'RecursiveLeastSquareSolver'. 
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The final result of the solver, a vector</p>
+        <p class = "arg"> The final result of the solver, a 'Vector'</p>
 	</div>
 </div>
 
@@ -44,11 +44,11 @@
 	    scalar objective() const
 	</div>
 	<div class = "description">
-        Calculate the square of l2-norm of 'Ax - b' in order to see how well the problem is solved using recursive least squares algorithm.
+        Calculate the square of l2-norm of <span>Ax - b</span> in order to see how well the problem is solved using recursive least squares algorithm.
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The square of l2-norm of 'Ax - b', a scalar</p>
+        <p class = "arg"> The square of l2-norm of <span>Ax - b</span>, a 'scalar'</p>
 	</div>
 </div>
 {%endblock%}

@@ -8,7 +8,7 @@
 </div>
 
 <div class ="introduction">
-	<p class = "introduction"> <span>LeastSquareSolver</span> is one of the solvers of least squares problems. <span>LeastSquareSolver</span> solves the least squares problems by solving the equation 'A^TAx = A^Tb' directly. This class derives directly from another class called <span>GeneralSolver</span> and takes <span>Problem</span> and <span>Time</span> as template.</p>
+	<p class = "introduction"> <span>LeastSquareSolver</span> is one of the solvers of least squares problems. <span>LeastSquareSolver</span> solves the least squares problems by solving the equation <span>A^TAx = A^Tb</span> directly. This class derives directly from another class called <span>GeneralSolver</span> and takes <span>Problem</span> and <span>Time</span> as template.</p>
 </div>
 
 <div class = "detail">
@@ -16,7 +16,7 @@
     	LeastSquareSolver(const Problem&amp s)
 	</div>
 	<div class = "description">
-		Initialization of the LeastSquareSolver. 
+		Initialization of the 'LeastSquareSolver'. 
 		<p class= "paragraph">
         Parameters:
         </p>
@@ -29,11 +29,11 @@
     	const Vector&amp result() const
 	</div>
 	<div class = "description">
-		Get the final result of LeastSquareSolver. 
+		Get the final result of 'LeastSquareSolver'. 
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The final result of the solver, a vector</p>
+        <p class = "arg"> The final result of the solver, a 'Vector'</p>
 	</div>
 </div>
 
@@ -42,11 +42,11 @@
 	    scalar objective() const
 	</div>
 	<div class = "description">
-        Calculate the square of l2-norm of 'Ax - b' in order to see how well the problem is solved using LeastSquareSolver.
+        Calculate the square of l2-norm of <span>Ax - b</span> in order to see how well the problem is solved using 'LeastSquareSolver'.
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The square of l2-norm of 'Ax - b', a scalar</p>
+        <p class = "arg"> The square of l2-norm of <span>Ax - b<span>, a 'scalar'</p>
 	</div>
 </div>
 {%endblock%}
