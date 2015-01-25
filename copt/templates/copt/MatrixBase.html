@@ -8,7 +8,7 @@
 </div>
 
 <div class ="introduction">
-	<p class = "introduction"> <span>MatrixBase</span> is one of the base mathematical classes in open source library COPT. <span>MatrixBase</span> describes a basic type matrix. A matrix is a multiple dimensional array with a number of arithmetic operations including summation, subtraction, multiplication etc. This class derives directly from another basic type called <span>Array</span> and also takes <span>scalar</span> and <span>index</span> as template. </p>
+	<p class = "introduction"> <span>MatrixBase</span> is one of the base mathematical classes in open source library COPT. <span>MatrixBase</span> describes a basic type matrix. A matrix is a multiple dimensional 'Array' with a number of arithmetic operations including summation, subtraction, multiplication etc. This class derives directly from another two basic type called <span>Array</span> and <span>AbstractMatrix</span>. It takes <span>scalar</span>, <span>index</span>, <span>RowAtCompileTime</span> and <span>ColAtCompileTime</span> as template. </p>
 </div>
 
 <div class = "detail">
@@ -16,23 +16,38 @@
     	MatrixBase()
 	</div>
 	<div class = "description">
-		The default constructor of MatrixBase. A matrix with 0 row and 0 column will be generated as default.
+		The default constructor of 'MatrixBase'. A matrix with 0 row and 0 column will be generated as default.
 	</div>
 </div>
 
 <div class = "detail">
 	<div class = "definition">
-    	MatrixBase(const index m, const index n, const scalar *data=NULL)
+    	MatrixBase(const index m, const index n, const scalar *data=nullptr, bool trans = false)
 	</div>
 	<div class = "description">
-		Construct a MatrixBase with m rows and n columns. If data is NULL, construct a zero MatrixBase.
+		Construct a 'MatrixBase' with <span>m</span> rows and <span>n</span> columns. If <span>data</span> is 'nullptr', construct a zero 'MatrixBase'.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>m:</span> Row number of the matrix</p>
-        <p class = "arg"><span>n:</span> Colunm number of the matrix</p>
-        <p class = "arg"><span>data:</span> The pointer to the array of data. NULL is used as default.</p>
+        <p class = "arg"><span>m:</span> Row number of the 'MatrixBase'</p>
+        <p class = "arg"><span>n:</span> Colunm number of the 'MatrixBase'</p>
+        <p class = "arg"><span>data:</span> The pointer to the array of data. 'nullptr' is used as default.</p>
+        <p class = "arg"><span>trans:</span> 'bool' variable to show whether the 'MatrixBase' is transpose. 'false' is used as default.</p>
 	</div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+        MatrixBase(const index m, const scalar *data=nullptr)
+    </div>
+    <div class = "description">
+        Construct a 'MatrixBase' with <span>m</span> rows when column number is specified. If <span>data</span> is 'nullptr', construct a zero 'MatrixBase'.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>m:</span> Row number of the 'MatrixBase'</p>
+        <p class = "arg"><span>data:</span> The pointer to the array of data. 'nullptr' is used as default.</p>
+    </div>
 </div>
 
 <div class = "detail">
@@ -40,12 +55,25 @@
     	MatrixBase(const MatrixBase&amp mat)
 	</div>
 	<div class = "description">
-		Copy constructor from a given matrix mat. The matrix will still be a reffered matrix if mat is one. Both matrixes point to the same array. Otherwise the data will be copied.
+		Copy constructor from a given 'MatrixBase' <span>mat</span>. The 'MatrixBase' will still be a reffered 'MatrixBase' if <span>mat</span> is one. Both 'MatrixBase's point to the same array. Otherwise the data will be copied.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>mat:</span> The matrix to be copied</p>
+        <p class = "arg"><span>mat:</span> The 'MatrixBase' to be copied</p>
 	</div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+        MatrixBase(const AbstractMatrix&amp mat)
+    </div>
+    <div class = "description">
+        ---------------Copy constructor from a given 'AbstractMatrix' <span>mat</span>. 
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>mat:</span> ---------------The 'AbstractMatrixBase' to be copied</p>
+    </div>
 </div>
 
 <div class = "detail">
@@ -53,34 +81,138 @@
     	~MatrixBase()
 	</div>
 	<div class = "description">
-		The deconstructor of MatrixBase.
+		The deconstructor of 'MatrixBase'.
 	</div>
 </div>
 
 <div class = "detail">
 	<div class = "definition">
-    	const index&amp		rows() const
+    	index	rows() const
 	</div>
 	<div class = "description">
-		Find how many rows are there of the MatrixBase.
+		Find how many rows are there of the 'MatrixBase'.
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> Row number of the matrix</p>
+        <p class = "arg"> Row number of the 'MatrixBase'</p>
 	</div>
 </div>
 
 <div class = "detail">
-	<div class = "definition">
-    	const index&amp 		cols() const
-	</div>
-	<div class = "description">
-		Find how many columns are there of the MatrixBase.
+    <div class = "definition">
+        bool isRowDynamic() const
+    </div>
+    <div class = "description">
+        Judge whether the 'MatrixBase' is the row number dynamic.
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> Column number of the matrix</p>
+        <p class = "arg"> True if the 'MatrixBase' is the row number dynamic, false otherwise.</p>
+    </div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+    	index 		cols() const
 	</div>
+	<div class = "description">
+		Find how many columns are there of the 'MatrixBase'.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> Column number of the 'MatrixBase'</p>
+	</div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+        bool isColumnDynamic() const
+    </div>
+    <div class = "description">
+        Judge whether the 'MatrixBase' is the column number dynamic.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> True if the 'MatrixBase' is the column number dynamic, false otherwise.</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+        index lda() const
+    </div>
+    <div class = "description">
+        Find lda(in current version lda = __rows+1) of the 'MatrixBase'.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> Lda of the 'MatrixBase'</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+        scalar *dataPtr()
+    </div>
+    <div class = "description">
+        Access to data pointer for modification or other operations.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The pointer to the data</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+        const scalar *dataPtr() const
+    </div>
+    <div class = "description">
+        Const access to data pointer.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The pointer to the data</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+        index size() const
+    </div>
+    <div class = "description">
+        -----------Get the dimension of the 'Array'-form of 'MatrixBase'.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> How many elements are there of the matrix</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+        int rowAtCompileTime() const
+    </div>
+    <div class = "description">
+        ----------------Get the row number of the 'MatrixBase' at compile time.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> ----------The row number of the 'MatrixBase' at compile time</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+        int colAtCompileTime() const
+    </div>
+    <div class = "description">
+        ----------------Get the column number of the 'MatrixBase' at compile time.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> ----------The column number of the 'MatrixBase' at compile time</p>
+    </div>
 </div>
 
 <div class = "detail">
@@ -88,7 +220,7 @@
     	scalar&amp operator()(const index i, const index j)
 	</div>
 	<div class = "description">
-		Matlib-like data access of MatrixBase. User can use operator() to access the element at the (i+1)-th row and the (j+1)-th colunm of a given MatrixBase mat. The syntax is simply mat(i,j). Note that the first element is with index (0,0) meaning that i is in range [0,rows-1] and j is in range [0,colunms-1].
+		Matlib-like data access of 'MatrixBase'. User can use operator() to access the element at the (i+1)-th row and the (j+1)-th colunm of a given 'MatrixBase' <span>mat</span>. The syntax is simply <span>mat(i,j)</span>. Note that the first element is with index (0,0) meaning that <span>i</span> is in range [0,rows-1] and <span>j</span> is in range [0,colunms-1].
         <p class= "paragraph">
         Parameters:
         </p>
@@ -97,7 +229,7 @@
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The (i+1,j+1) element of the matrix</p>
+        <p class = "arg"> The (i+1,j+1) element of the 'MatrixBase'</p>
 	</div>
 </div>
 
@@ -106,7 +238,7 @@
     	const scalar&amp operator()(const index i, const index j) const
 	</div>
 	<div class = "description">
-		Const access of element in MatrixBase.
+		Const access of element in 'MatrixBase'.
         <p class= "paragraph">
         Parameters:
         </p>
@@ -115,7 +247,7 @@
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The (i+1,j+1) element of the matrix</p>
+        <p class = "arg"> The (i+1,j+1) element of the 'MatrixBase'</p>
 	</div>
 </div>
 
@@ -124,15 +256,15 @@
     	const scalar&amp data(const index i) const
 	</div>
 	<div class = "description">
-		Get the (i+1)-th element of Array form of the MatrixBase. Note that i is in range [0,(row+1)*(col+1)-1].
+		Get the (i+1)-th element of 'Array'-form of the 'MatrixBase'. Note that <span>i</span> is in range [0,(row+1)*(col+1)-1].
 		<p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>i:</span> The index number of the element we want to get in Array form of the matrix</p>
+        <p class = "arg"><span>i:</span> The index number of the element we want to get in 'Array'-form of the 'MatrixBase'</p>
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The (i+1)-th element of Array form of the matrix, a scalar</p>
+        <p class = "arg"> The (i+1)-th element of 'Array'-form of the 'MatrixBase', a 'scalar'</p>
 	</div>
 </div>
 
@@ -141,15 +273,15 @@
     	Vector row(const index num)
 	</div>
 	<div class = "description">
-		Obtain the specific row of the MatrixBase. Note that num is in range [0,row-1].
+		Obtain the specific row of the 'MatrixBase'. Note that <span>num</span> is in range [0,row-1].
 		<p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>num:</span> The row index number of the element we want to get of the matrix</p>
+        <p class = "arg"><span>num:</span> The row index number of the element we want to get of the 'MatrixBase'</p>
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The (num+1)-th row of a given matrix, a vector</p>
+        <p class = "arg"> The (num+1)-th row of a given 'MatrixBase', a 'Vector'</p>
 	</div>
 </div>
 
@@ -158,15 +290,15 @@
     	const Vector row(const index num) const
 	</div>
 	<div class = "description">
-		Const access of rows in MatrixBase.
+		Const access of rows in 'MatrixBase'.
 		<p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>num:</span> The row index number of the element we want to get of the matrix</p>
+        <p class = "arg"><span>num:</span> The row index number of the element we want to get of the 'MatrixBase'</p>
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The (num+1)-th row of a given matrix, a vector</p>
+        <p class = "arg"> The (num+1)-th row of a given 'MatrixBase', a 'Vector'</p>
 	</div>
 </div>
 
@@ -175,15 +307,15 @@
     	Vector col(const index num)
 	</div>
 	<div class = "description">
-		Obtain the specific column of the MatrixBase. Note that num is in range [0,col-1].
+		Obtain the specific column of the 'MatrixBase'. Note that <span>num</span> is in range [0,col-1].
 		<p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>num:</span> The column index number of the element we want to get of the matrix</p>
+        <p class = "arg"><span>num:</span> The column index number of the element we want to get of the 'MatrixBase'</p>
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The (num+1)-th column of a given matrix, a vector</p>
+        <p class = "arg"> The (num+1)-th column of a given 'MatrixBase', a 'Vector'</p>
 	</div>
 </div>
 
@@ -192,15 +324,15 @@
     	const Vector col(const index num) const
 	</div>
 	<div class = "description">
-		Const access of columns in MatrixBase.
+		Const access of columns in 'MatrixBase'.
 		<p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>num:</span> The column index number of the element we want to get of the matrix</p>
+        <p class = "arg"><span>num:</span> The column index number of the element we want to get of the 'MatrixBase'</p>
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The (num+1)-th column of a given matrix, a vector</p>
+        <p class = "arg"> The (num+1)-th column of a given 'MatrixBase', a 'Vector'</p>
 	</div>
 </div>
 
@@ -209,11 +341,11 @@
     	void set(const index i, const scalar value)
 	</div>
 	<div class = "description">
-		Set the (i+1)-th element using Array form of MatrixBase.
+		Set the (i+1)-th element using 'Array'-form of 'MatrixBase'.
 		<p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>i:</span> The index number of Array form of MatrixBase</p>
+        <p class = "arg"><span>i:</span> The index number of 'Array'-form of 'MatrixBase'</p>
         <p class = "arg"><span>value:</span> Value of the element we want to set</p>
 	</div>
 </div>
@@ -223,13 +355,26 @@
     	void resize(index m, index n)
 	</div>
 	<div class = "description">
-		Resize rows and columns of the matrix.
+		Resize rows and columns of the 'MatrixBase'.
 		<p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>m:</span> New row number of the matrix</p>
-        <p class = "arg"><span>n:</span> New column number of the matrix</p>
+        <p class = "arg"><span>m:</span> New row number of the 'MatrixBase'</p>
+        <p class = "arg"><span>n:</span> New column number of the 'MatrixBase'</p>
 	</div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+        void resize(index m)
+    </div>
+    <div class = "description">
+        Resize for one dimension fixed 'MatrixBase'.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>m:</span> New row number or column number of the 'MatrixBase'</p>
+    </div>
 </div>
 
 <div class = "detail">
@@ -237,11 +382,11 @@
     	void setSymmetricFlag(bool sym)
 	</div>
 	<div class = "description">
-		Set symmetrix flag of the matrix which shows whether the matrix is symmetrix.
+		Set symmetrix flag of the 'MatrixBase' which shows whether the 'MatrixBase' is symmetrix.
 		<p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>sym:</span> A bool variable showing whether the matrix is symmtrix</p>
+        <p class = "arg"><span>sym:</span> A bool variable showing whether the 'MatrixBase' is symmtrix</p>
 	</div>
 </div>
 
@@ -250,7 +395,7 @@
     	bool isSymmetric() const
 	</div>
 	<div class = "description">
-		Judge whether the matrix is symmetrix. Return true if it is, false if not.
+		Judge whether the 'MatrixBase' is symmetrix. Return true if it is, false if not.
         <p class= "paragraph">
         Returns:
         </p>
@@ -263,11 +408,11 @@
     	void setTransposeFlag(bool trans)
 	</div>
 	<div class = "description">
-		Set transpose flag of the matrix which shows whether the matrix can be transposed.
+		Set transpose flag of the 'MatrixBase' which shows whether the 'MatrixBase' can be transposed.
 		<p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>trans:</span> A bool variable showing whether the matrix is transposable</p>
+        <p class = "arg"><span>trans:</span> A bool variable showing whether the 'MatrixBase' is transposable</p>
 	</div>
 </div>
 
@@ -276,7 +421,7 @@
     	bool isTranspose() const
 	</div>
 	<div class = "description">
-		Judge whether the matrix can be transposed. Return true if yes, false if not.
+		Judge whether the 'MatrixBase' can be transposed. Return true if yes, false if not.
         <p class= "paragraph">
         Returns:
         </p>
@@ -285,11 +430,26 @@
 </div>
 
 <div class = "detail">
+    <div class = "definition">
+        template&ltclass Mat&gt</br>
+        void binaryCheck(const Mat&amp mat) const
+    </div>
+    <div class = "description">
+        --------------Basic check for two matrices.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>mat:</span> -----The given matrix</p>
+    </div>
+</div>
+
+<div class = "detail">
 	<div class = "definition">
-    	MatrixBase&amp operator=(const MatrixBase&amp mat)
+    	template&ltclass Mat&gt</br>
+        MatrixBase&amp operator=(const Mat&amp mat)
 	</div>
 	<div class = "description">
-		Copy assignment of MatrixBase. The functionality is the same as copy constructor. All data is copied.
+		Copy assignment of 'MatrixBase'. The functionality is the same as copy constructor. All data is copied.
         <p class= "paragraph">
         Parameters:
         </p>
@@ -297,16 +457,17 @@
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> A matrix copied from the given mat</p>
+        <p class = "arg"> A 'MatrixBase' copied from the given <span>mat</span></p>
 	</div>
 </div>
 
 <div class = "detail">
 	<div class = "definition">
-    	MatrixBase operator+(const MatrixBase&amp mat)
+    	template&ltclass Mat&gt</br>
+        DMatrix operator+(const Mat&amp mat)
 	</div>
 	<div class = "description">
-		This is the summation operation of MatrixBase. The corresponding elements of the two matrixes are added together.
+		This is the summation operation of 'MatrixBase'. The corresponding elements of the two matrices are added together.
         <p class= "paragraph">
         Parameters:
         </p>
@@ -314,16 +475,17 @@
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The operation result whose type is MatrixBase</p>
+        <p class = "arg"> The operation result whose type is 'DMatrix'(= 'dynamic matrix')</p>
 	</div>
 </div>
 
 <div class = "detail">
 	<div class = "definition">
-    	MatrixBase operator-(const MatrixBase&amp mat)
+    	template&ltclass Mat&gt</br>
+        DMatrix operator-(const Mat&amp mat)
 	</div>
 	<div class = "description">
-		This is the subtraction operation of MatrixBase. Every element of the first matrix substracts the corresponding element of the given one.
+		This is the subtraction operation of 'MatrixBase'. Every element of the first matrix substracts the corresponding element of the given one.
         <p class= "paragraph">
         Parameters:
         </p>
@@ -331,124 +493,129 @@
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The operation result whose type is MatrixBase</p>
+        <p class = "arg"> The operation result whose type is 'DMatrix'(= 'dynamic matrix')</p>
 	</div>
 </div>
 
 <div class = "detail">
 	<div class = "definition">
-    	VectorBase<scalar,index> operator*(const VectorBase&ltscalar, index&gt&amp vec) const
+    	template&ltclass T&gt</br>
+        typename T::DType operator*(const T&amp vec) const
 	</div>
 	<div class = "description">
-		This is the multiplication operation between MatrixBase and VectorBase. Note that the column number of matrix must be equal to the size of vector.
+		----------------------Matrix multiplications. 
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>vec:</span> ------The given 'T' type variable</p>
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> -----------A 'T::DType' type result</p>
+	</div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+        DMatrix operator*(const scalar s) const
+    </div>
+    <div class = "description">
+        Computing the multiplication of the 'MatrixBase' and a 'scalar' <span>s</span>. Every element of the 'MatrixBase' multiplies <span>s</span>.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>s:</span> The given 'scalar' to multiply with the 'MatrixBase'</p>
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The operation result whose type is 'DMatrix'(= 'dynamic matrix')</p>
+    </div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		friend DMatrix operator*(const scalar s, const MatrixBase&amp mat)
+	</div>
+	<div class = "description">
+		This is the multiplication operation between a 'scalar' and a 'MatrixBase'. Every element of the matrix multiplies a given 'scalar' <span>s</span>.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>s:</span> The given 'scalar'</p>
+        <p class = "arg"><span>mat:</span> The given 'MatrixBase'</p>
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The operation result whose type is 'DMatrix'(= 'dynamic matrix')</p>
+	</div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		DMatrix transpose() const
+	</div>
+	<div class = "description">
+		This is the transpose operation of 'MatrixBase'. 
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The transposed matrix</p>
+	</div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+        template&ltclass T&gt</br>
+        typename T::DType transMulti(const T&amp t) const
+    </div>
+    <div class = "description">
+        -------------The transpose multiplication operation.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>t:</span> -----------The given 'T' type variable</p>
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> ------------A 'T::DType' result</p>
+    </div>
+</div>
+
+<div class = "detail">
+	<div class = "definition">
+		template&ltclass Vec&gt</br>
+        DVector transMulti(const Vec&amp vec, const vector_object&amp tag) const
+	</div>
+	<div class = "description">
+		This is the transpose multiplication operation between matrix and vector. Transopose the matrix and multiply it with the vector. Note that the row number of the original matrix must be equal to the size of vector.
         <p class= "paragraph">
         Parameters:
         </p>
         <p class = "arg"><span>vec:</span> The given vector</p>
+        <p class = "arg"><span>tag:</span> The trait of referred 'VectorBase'. A consideration of C++ feature.</p>
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> A VectorBase of size m if the original MatrixBase is with m rows.</p>
+        <p class = "arg"> A 'DVector'(= 'dynamic vector') of size <span>m</span> if column number of the original matrix is <span>m<span></p>
 	</div>
 </div>
 
 <div class = "detail">
 	<div class = "definition">
-		MatrixBase operator*(const MatrixBase&amp mat) const
+		template&ltclass Mat&gt</br>
+        DMatrix transMulti(const Mat&amp mat, const matrix_object&amp tag) const
 	</div>
 	<div class = "description">
-		This is the multiplication operation between MatrixBase and MatrixBase. Note that the column number of the first matrix must be equal to the row number of the second one.
+		This is the transpose multiplication operation between matrices. Transopose the matrix and multiply it with the given matrix. Note that column number of the first matrix must be equal to row number of the second one.
         <p class= "paragraph">
         Parameters:
         </p>
         <p class = "arg"><span>mat:</span> The given matrix</p>
+        <p class = "arg"><span>tag:</span> The trait of referred 'MatrixBase'. A consideration of C++ feature.</p>
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> A MatrixBase with m rows and n columns if row number of the first matrix is m and column number of the second one is n.</p>
-	</div>
-</div>
-
-<div class = "detail">
-	<div class = "definition">
-		friend MatrixBase operator*(const scalar s, const MatrixBase&amp mat)
-	</div>
-	<div class = "description">
-		This is the multiplication operation between a scalar and a MatrixBase. Every element of the matrix multiplies a given scalar s.
-        <p class= "paragraph">
-        Parameters:
-        </p>
-        <p class = "arg"><span>s:</span> The given scalar</p>
-        <p class = "arg"><span>mat:</span> The given matrix</p>
-        <p class= "paragraph">
-        Returns:
-        </p>
-        <p class = "arg"> A MatrixBase</p>
-	</div>
-</div>
-
-<div class = "detail">
-	<div class = "definition">
-		friend MatrixBase operator*(const MatrixBase& mat, const scalar s)
-	</div>
-	<div class = "description">
-		This is the multiplication operation between a MatrixBase and a scalar. Every element of the matrix multiplies a given scalar s.
-        <p class= "paragraph">
-        Parameters:
-        </p>
-        <p class = "arg"><span>mat:</span> The given matrix</p>
-        <p class = "arg"><span>s:</span> The given scalar</p>
-        <p class= "paragraph">
-        Returns:
-        </p>
-        <p class = "arg"> A MatrixBase</p>
-	</div>
-</div>
-
-<div class = "detail">
-	<div class = "definition">
-		MatrixBase transpose() const
-	</div>
-	<div class = "description">
-		This is the transpose operation of MatrixBase. 
-        <p class= "paragraph">
-        Returns:
-        </p>
-        <p class = "arg"> The transposed MatrixBase</p>
-	</div>
-</div>
-
-<div class = "detail">
-	<div class = "definition">
-		Vector transMulti(const Vector&amp vec) const
-	</div>
-	<div class = "description">
-		This is the transpose multiplication operation between MatrixBase and VectorBase. Transopose the MatrixBase and multiply it with the VectorBase. Note that the row number of the original matrix must be equal to the size of vector.
-        <p class= "paragraph">
-        Parameters:
-        </p>
-        <p class = "arg"><span>vec:</span> The given vector</p>
-        <p class= "paragraph">
-        Returns:
-        </p>
-        <p class = "arg"> A vector of size m if column number of the original matrix is m</p>
-	</div>
-</div>
-
-<div class = "detail">
-	<div class = "definition">
-		MatrixBase transMulti(const MatrixBase&amp mat) const
-	</div>
-	<div class = "description">
-		This is the transpose multiplication operation between MatrixBase and MatrixBase. Transopose the MatrixBase and multiply it with the given MatrixBase. Note that column number of the first matrix must be equal to row number of the second one.
-        <p class= "paragraph">
-        Parameters:
-        </p>
-        <p class = "arg"><span>mat:</span> The given matrix</p>
-        <p class= "paragraph">
-        Returns:
-        </p>
-        <p class = "arg"> A MatrixBase with m rows and n colunms if row number of the first matrix is m and column number of the second one is n</p>
+        <p class = "arg"> A 'DMatrix'(= 'dynamic matrix') with <span>m</span> rows and <span>n</span> colunms if row number of the first matrix is <span>m</span> and column number of the second one is <span>n</span></p>
 	</div>
 </div>
 
@@ -457,12 +624,12 @@
 		friend std::ostream&amp operator&lt&lt(std::ostream&amp os, const MatrixBase&amp mat)
 	</div>
 	<div class = "description">
-		This is an operator used to print MatrixBase.
+		This is an operator used to print 'MatrixBase'.
         <p class= "paragraph">
         Parameters:
         </p>
         <p class = "arg"><span>os:</span> The standard stream</p>
-        <p class = "arg"><span>mat:</span> The given matrix</p>
+        <p class = "arg"><span>mat:</span> The given 'MatrixBase'</p>
         <p class= "paragraph">
         Returns:
         </p>
@@ -475,15 +642,15 @@
 		Vector lapackSolve(const Vector&amp vec)
 	</div>
 	<div class = "description">
-		Lapack solver of linear system decribed as "Ax = b".
+		Lapack solver of linear system decribed as <span>"Ax = b"</span>.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>vec:</span> The given vector b</p>
+        <p class = "arg"><span>vec:</span> The given 'Vector' <span>b</span></p>
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The result vector x</p>
+        <p class = "arg"> The result 'Vector' <span>x</span></p>
 	</div>
 </div>
 
@@ -501,15 +668,15 @@
 		Vector leastSquareSolve(const Vector&amp vec)
 	</div>
 	<div class = "description">
-		Least square solver of linear system decribed as "Ax = b".
+		Least square solver of linear system decribed as <span>"Ax = b"</span>.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>vec:</span> The given vector b</p>
+        <p class = "arg"><span>vec:</span> The given 'Vector' <span>b</span></p>
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The result vector x</p>
+        <p class = "arg"> The result 'Vector' <span>x</span></p>
 	</div>
 </div>
 
@@ -518,7 +685,7 @@
 		static MatrixBase identity(index m, index n)
 	</div>
 	<div class = "description">
-		Construct an m-by-n MatrixBase with 1's on the diagonal and zeros elsewhere.
+		Construct an <span>m</span>-by-<span>n</span> 'MatrixBase' with <span>1</span>'s on the diagonal and <span>0</span>'s elsewhere.
         <p class= "paragraph">
         Parameters:
         </p>
@@ -536,7 +703,7 @@
 		static MatrixBase identity(index m, index n, const scalar s)
 	</div>
 	<div class = "description">
-		Construct an m-by-n MatrixBase with s's on the diagonal and zeros elsewhere.
+		Construct an <span>m</span>-by-<span>n</span> 'MatrixBase' with <span>s</span>'s on the diagonal and <span>0</span>'s elsewhere.
         <p class= "paragraph">
         Parameters:
         </p>
@@ -545,7 +712,7 @@
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The constucted matrix</p>
+        <p class = "arg"> The constucted 'MatrixBase'</p>
 	</div>
 </div>
 
@@ -554,7 +721,7 @@
 		void blockFromMatrix(const MatrixBase&amp mat, const std::set&ltindex&gt&amp rownums, const std::set&ltindex&gt&amp colnums)
 	</div>
 	<div class = "description">
-		Matrix blocking of the matrix. The row and column indices of blocking matrix are given in std::set&ltindex&gt from C++ standard library. Notice that the elements of std::set&ltindex&gt are placed in order.
+		Matrix blocking of 'MatrixBase'. The row and column indices of blocking matrix are given in std::set&ltindex&gt from C++ standard library. Notice that the elements of std::set&ltindex&gt are placed in order.
         <p class= "paragraph">
         Parameters:
         </p>
@@ -569,7 +736,7 @@
 		void columnBlockFromMatrix(const MatrixBase&amp mat, const std::set&ltindex&gt&amp colnums)
 	</div>
 	<div class = "description">
-		Matrix blocking of the matrix. The column indices of blocking matrix are given in std::set&ltindex&gt from C++ standard library. Notice that the elements of std::set&ltindex&gt are placed in order.
+		Matrix blocking of 'MatrixBase'. The column indices of blocking matrix are given in std::set&ltindex&gt from C++ standard library. Notice that the elements of std::set&ltindex&gt are placed in order.
         <p class= "paragraph">
         Parameters:
         </p>
@@ -583,7 +750,7 @@
 		void rowBlockFromMatrix(const MatrixBase&amp mat, const std::set&ltindex&gt&amp rownums)
 	</div>
 	<div class = "description">
-		Matrix blocking of the matrix. The row indices of blocking matrix are given in std::set&ltindex&gt from C++ standard library. Notice that the elements of std::set&ltindex&gt are placed in order.
+		Matrix blocking of 'MatrixBase'. The row indices of blocking matrix are given in std::set&ltindex&gt from C++ standard library. Notice that the elements of std::set&ltindex&gt are placed in order.
         <p class= "paragraph">
         Parameters:
         </p>
@@ -597,7 +764,7 @@
 		void blockFromMatrix(const MatrixBase&amp mat, const std::vector&ltindex&gt&amp rownums, const std::vector&ltindex&gt&amp colnums)
 	</div>
 	<div class = "description">
-		Matrix blocking of the matrix. The row and column indices of blocking matrix are given in std::vector&ltindex&gt from C++ standard library. Remember that the elements of std::vector&ltindex&gt are not forced to be in order.
+		Matrix blocking of 'MatrixBase'. The row and column indices of blocking matrix are given in std::vector&ltindex&gt from C++ standard library. Remember that the elements of std::vector&ltindex&gt are not forced to be in order.
         <p class= "paragraph">
         Parameters:
         </p>
@@ -609,7 +776,7 @@
 
 <div class = "detail">
 	<div class = "definition">
-		template&ltclass InputIterator&gt
+		template&ltclass InputIterator&gt</br>
 	    void blockFromMatrix(const MatrixBase&amp mat, const InputIterator&amp rowbegin, const InputIterator&amp rowend, const InputIterator&amp colbegin, const InputIterator&amp colend)
 	</div>
 	<div class = "description">
@@ -630,7 +797,7 @@
 		void columnBlockFromMatrix(const MatrixBase&amp mat, const std::vector&ltindex&gt&amp colnums)
 	</div>
 	<div class = "description">
-		Matrix blocking of the matrix. The column indices of blocking matrix are given in std::vector&ltindex&gt from C++ standard library. Remember that the elements of std::vector&ltindex&gt are not forced to be in order.
+		Matrix blocking of 'MatrixBase'. The column indices of blocking matrix are given in std::vector&ltindex&gt from C++ standard library. Remember that the elements of std::vector&ltindex&gt are not forced to be in order.
         <p class= "paragraph">
         Parameters:
         </p>
@@ -641,7 +808,7 @@
 
 <div class = "detail">
 	<div class = "definition">
-		template&ltclass InputIterator&gt
+		template&ltclass InputIterator&gt</br>
 	    void columnBlockFromMatrix(const MatrixBase&amp mat, const InputIterator&amp colbegin, const InputIterator&amp colend)
 	</div>
 	<div class = "description">
@@ -660,7 +827,7 @@
 		void rowBlockFromMatrix(const MatrixBase&amp mat, const std::vector&ltindex&gt&amp rownums)
 	</div>
 	<div class = "description">
-		Matrix blocking of the matrix. The row indices of blocking matrix are given in std::vector&ltindex&gt from C++ standard library. Remember that the elements of std::vector&ltindex&gt are not forced to be in order.
+		Matrix blocking of 'MatrixBase'. The row indices of blocking matrix are given in std::vector&ltindex&gt from C++ standard library. Remember that the elements of std::vector&ltindex&gt are not forced to be in order.
         <p class= "paragraph">
         Parameters:
         </p>
@@ -671,7 +838,7 @@
 
 <div class = "detail">
 	<div class = "definition">
-		template&ltclass InputIterator&gt
+		template&ltclass InputIterator&gt</br>
 	    void rowBlockFromMatrix(const MatrixBase&amp mat, const InputIterator&amp rowbegin, const InputIterator&amp rowend)
 	</div>
 	<div class = "description">
@@ -690,12 +857,12 @@
 		void combineAlongRow(const MatrixBase&amp m1, const MatrixBase&amp m2)
 	</div>
 	<div class = "description">
-		This is a function used to combine two matrix along row direction. Column numbers of the two matrix must be equal.
+		This is a function used to combine two 'MatrixBase's along row direction. Column numbers of the two matrix must be equal.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>m1:</span> The first matrix to combine</p>
-        <p class = "arg"><span>m2:</span> The second matrix to combine</p>
+        <p class = "arg"><span>m1:</span> The first 'MatrixBase' to combine</p>
+        <p class = "arg"><span>m2:</span> The second 'MatrixBase' to combine</p>
 	</div>
 </div>
 
@@ -704,7 +871,7 @@
 		void combineAlongColumn(const MatrixBase&amp m1, const MatrixBase&amp m2)
 	</div>
 	<div class = "description">
-		This is a function used to combine two matrix along colunm direction. Row numbers of the two matrix must be equal.
+		This is a function used to combine two 'MatrixBase's along colunm direction. Row numbers of the two 'MatrixBase's must be equal.
         <p class= "paragraph">
         Parameters:
         </p>
@@ -718,13 +885,13 @@
 		static inline void stCombineAlongRow(const MatrixBase&amp m1, const MatrixBase&amp m2, MatrixBase&amp m)
 	</div>
 	<div class = "description">
-		This is a function used to combine two matrix along row direction and it takes output as a parameter. Column numbers of the two matrix must be equal.
+		This is a function used to combine two matrix along row direction and it takes output as a parameter. Column numbers of the two 'MatrixBase's must be equal.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>m1:</span> The first matrix to combine</p>
-        <p class = "arg"><span>m2:</span> The second matrix to combine</p>
-        <p class = "arg"><span>[out]m:</span> The result matrix after combination</p>
+        <p class = "arg"><span>m1:</span> The first 'MatrixBase' to combine</p>
+        <p class = "arg"><span>m2:</span> The second 'MatrixBase' to combine</p>
+        <p class = "arg"><span>[out]m:</span> The result 'MatrixBase' after combination</p>
 	</div>
 </div>
 
@@ -733,13 +900,13 @@
 		static inline void stCombineAlongColumn(const MatrixBase&amp m1, const MatrixBase&amp m2, MatrixBase&amp m)
 	</div>
 	<div class = "description">
-		This is a function used to combine two matrix along colunm direction and it takes output as a parameter. Row numbers of the two matrix must be equal.
+		This is a function used to combine two 'MatrixBase's along colunm direction and it takes output as a parameter. Row numbers of the two 'MatrixBase's must be equal.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>m1:</span> The first matrix to combine</p>
-        <p class = "arg"><span>m2:</span> The second matrix to combine</p>
-        <p class = "arg"><span>[out]m:</span> The result matrix after combination</p>
+        <p class = "arg"><span>m1:</span> The first 'MatrixBase' to combine</p>
+        <p class = "arg"><span>m2:</span> The second 'MatrixBase' to combine</p>
+        <p class = "arg"><span>[out]m:</span> The result 'MatrixBase' after combination</p>
 	</div>
 </div>
 
@@ -748,12 +915,12 @@
 		void setRandom(const index rows, const index cols)
 	</div>
 	<div class = "description">
-		Set a random matrix with given rows and cols.
+		Set a random 'MatrixBase' with given rows and cols.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>rows:</span> Row number of the random matrix</p>
-        <p class = "arg"><span>cols:</span> Column number of the random matrix</p>
+        <p class = "arg"><span>rows:</span> Row number of the random 'MatrixBase'</p>
+        <p class = "arg"><span>cols:</span> Column number of the random 'MatrixBase'</p>
 	</div>
 </div>
 
@@ -762,25 +929,26 @@
 		static inline MatrixBase random(const index rows, const index cols)
 	</div>
 	<div class = "description">
-		Set a random matrix with given rows and cols and return it as a result.
+		Set a random 'MatrixBase' with given rows and cols and return it as a result.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>rows:</span> Row number of the random matrix</p>
-        <p class = "arg"><span>cols:</span> Column number of the random matrix</p>
+        <p class = "arg"><span>rows:</span> Row number of the random 'MatrixBase'</p>
+        <p class = "arg"><span>cols:</span> Column number of the random 'MatrixBase'</p>
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> A random matrix with given row number and column number</p>
+        <p class = "arg"> A random 'MatrixBase' with given row number and column number</p>
 	</div>
 </div>
 
 <div class = "detail">
 	<div class = "definition">
-		void mtm(MatrixBase&amp mat) const
+		template&ltclass Mat&gt</br>
+        void mtm(Mat&amp mat) const
 	</div>
 	<div class = "description">
-		This is a function used to compute A^TA of a given matrix A.
+		This is a function used to compute <span>A^TA</span> of a given matrix <span>A</span>.
         <p class= "paragraph">
         Parameters:
         </p>
@@ -793,7 +961,7 @@
 		podscalar operationNorm() const
 	</div>
 	<div class = "description">
-		This is a function used to compute the operation norm of the matrix.
+		This is a function used to compute the operation norm of the 'MatrixBase'.
         <p class= "paragraph">
         Returns:
         </p>

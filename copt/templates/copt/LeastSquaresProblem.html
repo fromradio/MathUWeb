@@ -8,7 +8,7 @@
 </div>
 
 <div class ="introduction">
-	<p class = "introduction"> <span>LeastSquaresProblem</span> is one of the problem classes in open source library COPT. <span>LeastSquaresProblem</span> describes a least square problem. Briefly, a matrix A and a target vector b are given. We are supposed to find the optimal solution of 'Ax = b'. In other words, we need to minimize the l2-norm of 'Ax - b'. This class derives directly from another class called <span>VectorProblem</span> and also takes <span>kernal</span> as template. </p>
+	<p class = "introduction"> <span>LeastSquaresProblem</span> is one of the problem classes in open source library COPT. <span>LeastSquaresProblem</span> describes a least square problem. Briefly, a matrix <span>A</span> and a target vector <span>b</span> are given. We are supposed to find the optimal solution of <span>Ax = b</span>. In other words, we need to minimize the l2-norm of <span>Ax - b</span>. This class derives directly from another class called <span>VectorProblem</span> and also takes <span>kernal</span> as template. </p>
 </div>
 
 <div class = "detail">
@@ -16,7 +16,7 @@
     	LeastSquaresProblem(const Matrix&amp A, const Vector&amp b)
 	</div>
 	<div class = "description">
-		Initialization of the least squares problem. Notice that the row number of A must be equal to the size of b.
+		Initialization of the least squares problem. Notice that the row number of <span>A</span> must be equal to the size of <span>b</span>.
 		<p class= "paragraph">
         Parameters:
         </p>
@@ -30,11 +30,11 @@
 	    bool isValidInput(const Vector&amp x) const
 	</div>
 	<div class = "description">
-        Check whether the input is valid. This means that the column number of the given coefficient matrix A must be equal to the size of the parameter vector x to be find.
+        Check whether the input is valid. This means that the column number of the given coefficient matrix <span>A</span> must be equal to the size of the parameter vector <span>x</span> to be find.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>x:</span> The parameter vector x to be find</p>
+        <p class = "arg"><span>x:</span> The parameter vector <span>x</span> to be find</p>
         <p class= "paragraph">
         Returns:
         </p>
@@ -47,7 +47,7 @@
 	    bool isValid() const
 	</div>
 	<div class = "description">
-        Check whether the problem is a valid problem. This means that the row number of the given coefficient matrix A must be equal to the size of the given target vector b.
+        Check whether the problem is a valid problem. This means that the row number of the given coefficient matrix <span>A</span> must be equal to the size of the given target vector <span>b</span>.
         <p class= "paragraph">
         Returns:
         </p>
@@ -60,11 +60,11 @@
 	    const Matrix&amp matA() const
 	</div>
 	<div class = "description">
-        Get the coefficient matrix A of a least squares problem.
+        Get the coefficient matrix <span>A</span> of a least squares problem.
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The coefficient matrix A</p>
+        <p class = "arg"> The coefficient matrix <span>A</span></p>
 	</div>
 </div>
 
@@ -73,11 +73,11 @@
 	    const Vector&amp obB() const
 	</div>
 	<div class = "description">
-        Get the target vector b of a least squares problem.
+        Get the target vector <span>b</span> of a least squares problem.
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The target vector b</p>
+        <p class = "arg"> The target vector <span>b</span></p>
 	</div>
 </div>
 
@@ -86,15 +86,15 @@
 	    scalar objective(const Vector&amp x) const
 	</div>
 	<div class = "description">
-        Calculate the square of l2-norm of 'Ax - b' in order to see how well the problem is solved.
+        Calculate the square of l2-norm of <span>Ax - b</span> in order to see how well the problem is solved.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>x:</span> The parameter vector x</p>
+        <p class = "arg"><span>x:</span> The parameter vector <span>x</span></p>
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The square of l2-norm of 'Ax - b', a scalar</p>
+        <p class = "arg"> The square of l2-norm of <span>Ax - b</span>, a 'scalar'</p>
 	</div>
 </div>
 {%endblock%}

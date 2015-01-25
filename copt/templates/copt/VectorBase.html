@@ -8,7 +8,7 @@
 </div>
 
 <div class ="introduction">
-	<p class = "introduction"> <span>VectorBase</span> is one of the base mathematical classes in open source library COPT. <span>VectorBase</span> describes a basic type vector. A vector is a multiple dimensional array with a number of arithmetic operations including summation, subtraction, multiplication etc. This class derives directly from another basic type called <span>Array</span> and also takes <span>scalar</span> and <span>index</span> as template. </p>
+	<p class = "introduction"> <span>VectorBase</span> is one of the base mathematical classes in open source library COPT. <span>VectorBase</span> describes a basic type vector. A vector is a multiple dimensional 'Array' with a number of arithmetic operations including summation, subtraction, multiplication etc. This class derives directly from another two basic type called <span>Array</span> and <span>AbstractVector</span>. It takes <span>scalar</span>, <span>index</span> and <span>SizeAtCompileTime</span> as template. </p>
 </div>
 
 <div class = "detail">
@@ -16,51 +16,79 @@
     	VectorBase()
 	</div>
 	<div class = "description">
-		The default constructor of VectorBase. A zero-dimensional vector will be generated as default.
+		The default constructor of 'VectorBase'. A zero-dimensional vector will be generated as default.
 	</div>
 </div>
 
 <div class = "detail">
-	<div class = "definition">
-	    VectorBase(const index size, scalar *data = nullptr)
-	</div>
-	<div class = "description">
-        Constructor for generating a vector with specific length and a given array. A zero vector is generated if given array is a nullptr.
+    <div class = "definition">
+        VectorBase(const index size, const scalar *data = nullptr, const index inter = 1)
+    </div>
+    <div class = "description">
+        Constructor for generating a vector with specific length and a given array. Besides the interval of 'VectorBase' should be specified too. A zero vector is generated if given array is a 'nullptr'.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>size:</span> The size of the vector</p>
-        <p class = "arg"><span>data:</span> The pointer to the array of data. nullptr is used as default.</p>
-	</div>
+        <p class = "arg"><span>size:</span> The size of the 'VectorBase'</p>
+        <p class = "arg"><span>data:</span> The pointer to the array of data. 'nullptr' is used as default.</p>
+        <p class = "arg"><span>inter:</span> The interval of the pointer. '1' is used as default.</p>
+    </div>
 </div> 
 
 <div class = "detail">
-	<div class = "definition">
-	    VectorBase (const VectorBase&amp vec)
-	</div>
-	<div class = "description">
-        Copy constructor from a given vector vec. The vector will still be a reffered vector if vec is one. Both vectors point to the same array. Otherwise the data will be copied.
+    <div class = "definition">
+        VectorBase(const scalar *data, const index inter = 1)
+    </div>
+    <div class = "description">
+        Constructor for generating a size-specified vector with a given array. Besides the interval of 'VectorBase' should be specified too.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>vec:</span> The vector to be copied</p>
-	</div>
+        <p class = "arg"><span>data:</span> The pointer to the array of data. 'nullptr' is used as default.</p>
+        <p class = "arg"><span>inter:</span> The interval of the pointer. '1' is used as default.</p>
+    </div>
+</div> 
+
+<div class = "detail">
+    <div class = "definition">
+        VectorBase (const VectorBase&amp vec)
+    </div>
+    <div class = "description">
+        Copy constructor from a given 'VectorBase' <span>vec</span>. The 'VectorBase' will still be a reffered one if <span>vec</span> is one. Both 'VectorBase's point to the same array. Otherwise the data will be copied.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>vec:</span> The 'VectorBase' to be copied</p>
+    </div>
 </div>
 
 <div class = "detail">
-	<div class = "definition">
-	    VectorBase(const index size, const referred_array&amp tag, scalar *data, const index inter = 1)
-	</div>
-	<div class = "description">
-        Constructor of a referred vector. Referred vector is a special kind of vector which does not have its own data. The data is stored somewhere else. As an instance, it is not convenient to construct another vector when representating a column or a row of a matrix. But it is efficient just referred to the data. Here inter is the interval between two elements.
+    <div class = "definition">
+        VectorBase (const AbstractVector&amp vec)
+    </div>
+    <div class = "description">
+        ------------------Copy constructor from a given 'AbstractVector' <span>vec</span>. 
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>size:</span> The size of the vector</p>
-        <p class = "arg"><span>[out]tag:</span> The referred vector constructed</p>
+        <p class = "arg"><span>vec:</span> ----------------The 'AbstractVector' to be copied</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+        VectorBase(const index size, const referred_array&amp tag, scalar *data, const index inter = 1)
+    </div>
+    <div class = "description">
+        Constructor of a referred 'VectorBase'. Referred 'VectorBase' is a special kind of 'VectorBase' which does not have its own data. The data is stored somewhere else. As an instance, it is not convenient to construct another 'VectorBase' when representating a column or a row of a 'MatrixBase'. But it is efficient just referred to the data. Here inter is the interval between two elements.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>size:</span> The size of the 'VectorBase'</p>
+        <p class = "arg"><span>tag:</span> The trait of referred 'VectorBase'. A consideration of C++ feature.</p>
         <p class = "arg"><span>data:</span> The pointer to the array of data</p>
-        <p class = "arg"><span>inter:</span> The interval between two elements. 1 is used as default.</p>
-	</div>
+        <p class = "arg"><span>inter:</span> The interval between two elements. '1' is used as default.</p>
+    </div>
 </div>
 
 <div class = "detail">
@@ -77,7 +105,7 @@
         VectorBase(const std::vector&ltscalar&gt&amp vec)
 	</div>
 	<div class = "description">
-        Constructor from std::vector vec from C++ standard libraray. The size is set as the size of std::vector and the data is the same as given vec.
+        Constructor from std::vector <span>vec</span> from C++ standard libraray. The size is set as the size of std::vector and the data is the same as given <span>vec</span>.
         <p class= "paragraph">
         Parameters:
         </p>
@@ -94,8 +122,83 @@
     	~VectorBase()
 	</div>
 	<div class = "description">
-		The deconstructor of VectorBase.
+		The deconstructor of 'VectorBase'.
 	</div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+        index dimension() const
+    </div>
+    <div class = "description">
+        Get the dimension of the 'VectorBase'.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The dimension of the 'VectorBase'</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+        index size() const
+    </div>
+    <div class = "description">
+        Same as above function.
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+        bool isReferred() const
+    </div>
+    <div class = "description">
+        Judge whether the 'VectorBase' is referred.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> True if the 'VectorBase' is referred, false otherwise.</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+        index interval() const
+    </div>
+    <div class = "description">
+        Get the interval of the 'VectorBase'.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The interval of the 'VectorBase'</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+        int sizeAtCompileTime() const
+    </div>
+    <div class = "description">
+        ----------------Get the size the 'VectorBase' at compile time.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> ----------The size of the 'VectorBase' at compile time</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+        void resize(const index size, const index inter=1)
+    </div>
+    <div class = "description">
+        Resize the 'VectorBase' even if it is a referred one. Notice that size specified 'VectorBase' is not able to be resized.
+        <p class= "paragraph">
+        Parameters:
+        </p>
+        <p class = "arg"><span>size:</span> New size of the 'VectorBase'</p>
+        <p class = "arg"><span>inter:</span> The interval of the pointer. '1' is used as default.</p>
+    </div>
 </div>
 
 <div class = "detail">
@@ -103,15 +206,15 @@
         VectorBase&amp operator=(const VectorBase&amp vec)
 	</div>
 	<div class = "description">
-		Copy assignment of VectorBase. The functionality is the same as copy constructor. All data is copied.
+		Copy assignment of 'VectorBase'. The functionality is the same as copy constructor. All data is copied.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>vec:</span> The vector to be copied</p>
+        <p class = "arg"><span>vec:</span> The 'VectorBase' to be copied</p>
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> A vector copied from the given vec</p>
+        <p class = "arg"> A 'VectorBase' copied from the given <span>vec</span></p>
 	</div>
 </div>
 
@@ -120,7 +223,7 @@
         scalar&amp operator()(const index i)
 	</div>
 	<div class = "description">
-		Matlib-like data access of VectorBase. User can use operator() to access the (i+1)-th element of a given VectorBase vec. The syntax is simply vec(i) and out-of-range exception will be throwed if i is less than zero or no less than the size of vec. Note that the first element is with index 0 meaning that i is in range [0,size-1].
+		Matlib-like data access of 'VectorBase'. User can use operator() to access the (i+1)-th element of a given 'VectorBase' <span>vec</span>. The syntax is simply <span>vec(i)</span> and out-of-range exception will be throwed if <span>i</span> is less than zero or no less than the size of <span>vec</span>. Note that the first element is with index 0 meaning that <span>i</span> is in range [0,size-1].
         <p class= "paragraph">
         Parameters:
         </p>
@@ -128,7 +231,7 @@
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The (i+1)-th element of the vector</p>
+        <p class = "arg"> The (i+1)-th element of the 'VectorBase'</p>
 	</div>
 </div>
 
@@ -137,7 +240,7 @@
         const scalar&amp operator()(const index i) const
 	</div>
 	<div class = "description">
-        Const access of element in VectorBase.
+        Const access of element in 'VectorBase'.
         <p class= "paragraph">
         Parameters:
         </p>
@@ -145,20 +248,47 @@
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The (i+1)-th element of the vector</p>
+        <p class = "arg"> The (i+1)-th element of the 'VectorBase'</p>
 	</div>
 </div>
 
 <div class = "detail">
+    <div class = "definition">
+        scalar *dataPtr()
+    </div>
+    <div class = "description">
+        Access to data pointer for modification or other operations.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The pointer to the data</p>
+    </div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+        const scalar *dataPtr() const
+    </div>
+    <div class = "description">
+        Const access to data pointer.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The pointer to the data</p>
+    </div>
+</div>
+
+<div class = "detail">
 	<div class = "definition">
-        bool operator&lt(const VectorBase&amp vec) const
+        template&ltint S&gt</br>
+        bool operator&lt(const VectorBase&ltscalar,index,S&gt&amp vec) const
 	</div>
 	<div class = "description">
-        Comparison of two VectorBases. Value true is returned if every element of the first VectorBase is smaller than the right one, false is returned otherwise.
+        Comparison of two 'VectorBase's. Value true is returned if every element of the first 'VectorBase' is smaller than the right one, false is returned otherwise.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>vec:</span> The given vector to compare with the first vector</p>
+        <p class = "arg"><span>vec:</span> The given 'VectorBase' to compare with the first 'VectorBase'</p>
         <p class= "paragraph">
         Returns:
         </p>
@@ -168,14 +298,14 @@
 
 <div class = "detail">
 	<div class = "definition">
-        bool operator&lt (const scalar s) const
+        bool operator&lt(const scalar s) const
 	</div>
 	<div class = "description">
-        Comparison of a VectorBase and a scalar. Value true is returned if every element of the VectorBase is smaller than the given scalar s, false is returned otherwise.
+        Comparison of a 'VectorBase' and a 'scalar'. Value true is returned if every element of the 'VectorBase' is smaller than the given 'scalar' <span>s</span>, false is returned otherwise.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>s:</span> The given scalar to compare with the vector</p>
+        <p class = "arg"><span>s:</span> The given 'scalar' to compare with the 'VectorBase'</p>
         <p class= "paragraph">
         Returns:
         </p>
@@ -185,14 +315,15 @@
 
 <div class = "detail">
 	<div class = "definition">
-        bool operator&lt=(const VectorBase&amp vec) const
+        template&ltint S&gt</br>
+        bool operator&lt=(const VectorBase&ltscalar,index,S&gt&amp vec) const
 	</div>
 	<div class = "description">
-        Comparison of two VectorBases. Value true is returned if every element of the first VectorBase is not larger than the right one, false is returned otherwise.
+        Comparison of two 'VectorBase's. Value true is returned if every element of the first 'VectorBase' is not larger than the right one, false is returned otherwise.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>vec:</span> The given vector to compare with the first vector</p>
+        <p class = "arg"><span>vec:</span> The given 'VectorBase' to compare with the first 'VectorBase'</p>
         <p class= "paragraph">
         Returns:
         </p>
@@ -205,11 +336,11 @@
         bool operator&lt=(const scalar s) const
 	</div>
 	<div class = "description">
-        Comparison of a VectorBase and a scalar. Value true is returned if every element of the VectorBase is not larger than the given scalar s, false is returned otherwise.
+        Comparison of a 'VectorBase' and a 'scalar'. Value true is returned if every element of the 'VectorBase' is not larger than the given 'scalar' <span>s</span>, false is returned otherwise.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>s:</span> The given scalar to compare with the vector</p>
+        <p class = "arg"><span>s:</span> The given 'scalar' to compare with the 'VectorBase'</p>
         <p class= "paragraph">
         Returns:
         </p>
@@ -219,14 +350,15 @@
 
 <div class = "detail">
 	<div class = "definition">
-        bool operator&gt (const VectorBase&amp vec) const
+        template&ltint S&gt</br>
+        bool operator&gt(const VectorBase&ltscalar,index,S&gt&amp vec) const
 	</div>
 	<div class = "description">
-        Comparison of two VectorBases. Value true is returned if every element of the first VectorBase is larger than the right one, false is returned otherwise.
+        Comparison of two 'VectorBase's. Value true is returned if every element of the first 'VectorBase' is larger than the right one, false is returned otherwise.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>vec:</span> The given vector to compare with the first vector</p>
+        <p class = "arg"><span>vec:</span> The given 'VectorBase' to compare with the first 'VectorBase'</p>
         <p class= "paragraph">
         Returns:
         </p>
@@ -236,14 +368,14 @@
 
 <div class = "detail">
 	<div class = "definition">
-        bool operator&gt (const scalar s) const
+        bool operator&gt(const scalar s) const
 	</div>
 	<div class = "description">
-        Comparison of a VectorBase and a scalar. Value true is returned if every element of the VectorBase is larger than the given scalar s, false is returned otherwise.
+        Comparison of a 'VectorBase' and a 'scalar'. Value true is returned if every element of the 'VectorBase' is larger than the given 'scalar' <span>s</span>, false is returned otherwise.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>s:</span> The given scalar to compare with the vector</p>
+        <p class = "arg"><span>s:</span> The given 'scalar' to compare with the 'VectorBase'</p>
         <p class= "paragraph">
         Returns:
         </p>
@@ -253,14 +385,15 @@
 
 <div class = "detail">
 	<div class = "definition">
-        bool operator&gt=(const VectorBase&amp vec) const
+        template&ltint S&gt</br>
+        bool operator&gt=(const VectorBase&ltscalar,index,S&gt&amp vec) const
 	</div>
 	<div class = "description">
-        Comparison of two VectorBases. Value true is returned if every element of the first VectorBase is not smaller than the right one, false is returned otherwise.
+        Comparison of two 'VectorBase's. Value true is returned if every element of the first 'VectorBase' is not smaller than the right one, false is returned otherwise.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>vec:</span> The given vector to compare with the first vector</p>
+        <p class = "arg"><span>vec:</span> The given 'VectorBase' to compare with the first 'VectorBase'</p>
         <p class= "paragraph">
         Returns:
         </p>
@@ -273,11 +406,11 @@
         bool operator&gt=(const scalar s) const
 	</div>
 	<div class = "description">
-        Comparison of a VectorBase and a scalar. Value true is returned if every element of the VectorBase is not smaller than the given scalar s, false is returned otherwise.
+        Comparison of a 'VectorBase' and a 'scalar'. Value true is returned if every element of the 'VectorBase' is not smaller than the given 'scalar' <span>s</span>, false is returned otherwise.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>s:</span> The given scalar to compare with the vector</p>
+        <p class = "arg"><span>s:</span> The given 'scalar' to compare with the 'VectorBase'</p>
         <p class= "paragraph">
         Returns:
         </p>
@@ -287,14 +420,15 @@
 
 <div class = "detail">
 	<div class = "definition">
-        bool operator==(const VectorBase&amp vec) const
+        template&ltint S&gt</br>
+        bool operator==(const VectorBase&ltscalar,index,S&gt&amp vec) const
 	</div>
 	<div class = "description">
-        Comparison of two VectorBases. Value true is returned if every element of the first VectorBase is equal to the right one, false is returned otherwise.
+        Comparison of two 'VectorBase's. Value true is returned if every element of the first 'VectorBase' is equal to the right one, false is returned otherwise.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>vec:</span> The given vector to compare with the first vector</p>
+        <p class = "arg"><span>vec:</span> The given 'VectorBase' to compare with the first 'VectorBase'</p>
         <p class= "paragraph">
         Returns:
         </p>
@@ -307,11 +441,11 @@
         bool operator==(const scalar s) const
 	</div>
 	<div class = "description">
-        Comparison of a VectorBase and a scalar. Value true is returned if every element of the VectorBase is equal to the given scalar s, false is returned otherwise.
+        Comparison of a 'VectorBase' and a 'scalar'. Value true is returned if every element of the 'VectorBase' is equal to the given 'scalar' <span>s</span>, false is returned otherwise.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>s:</span> The given scalar to compare with the vector</p>
+        <p class = "arg"><span>s:</span> The given 'scalar' to compare with the 'VectorBase'</p>
         <p class= "paragraph">
         Returns:
         </p>
@@ -321,14 +455,15 @@
 
 <div class = "detail">
 	<div class = "definition">
-        bool operator!=(const VectorBase&amp vec) const
+        template&ltint S&gt</br>
+        bool operator!=(const VectorBase&ltscalar,index,S&gt&amp vec) const
 	</div>
 	<div class = "description">
-        Comparison of two VectorBases. Value false is returned if every element of the first VectorBase is equal to the right one, true is returned otherwise.
+        Comparison of two 'VectorBase's. Value false is returned if every element of the first 'VectorBase' is equal to the right one, true is returned otherwise.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>vec:</span> The given vector to compare with the first vector</p>
+        <p class = "arg"><span>vec:</span> The given 'VectorBase' to compare with the first 'VectorBase'</p>
         <p class= "paragraph">
         Returns:
         </p>
@@ -341,11 +476,11 @@
         bool operator!=(const scalar s) const
 	</div>
 	<div class = "description">
-        Comparison of a VectorBase and a scalar. Value false is returned if every element of the VectorBase is equal to the given scalar s, true is returned otherwise.
+        Comparison of a 'VectorBase' and a 'scalar'. Value false is returned if every element of the 'VectorBase' is equal to the given 'scalar' <span>s</span>, true is returned otherwise.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>s:</span> The given scalar to compare with the vector</p>
+        <p class = "arg"><span>s:</span> The given 'scalar' to compare with the 'VectorBase'</p>
         <p class= "paragraph">
         Returns:
         </p>
@@ -358,11 +493,11 @@
         podscalar squaredNorm() const
 	</div>
 	<div class = "description">
-		Computation of the square of l2 norm of the VectorBase.
+		Computation of the square of l2 norm of the 'VectorBase'.
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The square of l2 norm of the VectorBase whose type is podscalar</p>
+        <p class = "arg"> The square of l2 norm of the 'VectorBase' whose type is 'podscalar'</p>
 	</div>
 </div>
 
@@ -371,12 +506,25 @@
         podscalar absNorm() const
 	</div>
 	<div class = "description">
-        Computation of the abs norm or l1 norm of the VectorBase.
+        Computation of the abs norm or l1 norm of the 'VectorBase'.
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The abs norm or l1 norm of the VectorBase whose type is podscalar</p>
+        <p class = "arg"> The abs norm or l1 norm of the 'VectorBase' whose type is 'podscalar'</p>
 	</div>
+</div>
+
+<div class = "detail">
+    <div class = "definition">
+        podscalar norm() const
+    </div>
+    <div class = "description">
+        Computation of the l2 norm of the 'VectorBase'.
+        <p class= "paragraph">
+        Returns:
+        </p>
+        <p class = "arg"> The l2 norm of the 'VectorBase' whose type is 'podscalar'</p>
+    </div>
 </div>
 
 <div class = "detail">
@@ -384,28 +532,29 @@
         podscalar normalize()
 	</div>
 	<div class = "description">
-		Normalizing the VectorBase and returning the norm of it.
+		Normalizing the 'VectorBase' and returning the norm of it.
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The norm of the VectorBase whose type is podscalar</p>
+        <p class = "arg"> The norm of the 'VectorBase' whose type is 'podscalar'</p>
 	</div>
 </div>
 
 <div class = "detail">
 	<div class = "definition">
-        scalar dot(const VectorBase&amp vec) const
+        template&ltint S&gt</br>
+        scalar dot(const VectorBase&ltscalar,index,S&gt&amp vec) const
 	</div>
 	<div class = "description">
-        This is the dot operation of VectorBase.
+        This is the dot operation of 'VectorBase'.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>vec:</span> The given vector to dot with the first vector</p>
+        <p class = "arg"><span>vec:</span> The given 'VectorBase' to dot with the first 'VectorBase'</p>
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The operation result whose type is scalar</p>
+        <p class = "arg"> The operation result whose type is 'scalar'</p>
 	</div>
 </div>
 
@@ -414,71 +563,73 @@
         void scale(scalar s)
 	</div>
 	<div class = "description">
-        Scaling the whole vector with a given scalar s. 
+        Scaling the whole 'VectorBase' with a given 'scalar' <span>s</span>. 
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>s:</span> The given scalar parameter</p>
+        <p class = "arg"><span>s:</span> The given 'scalar' parameter</p>
 	</div>
 </div>
 
 <div class = "detail">
 	<div class = "definition">
-        VectorBase operator* (scalar s)
+        VectorBase operator*(scalar s)
 	</div>
 	<div class = "description">
-		Computing the multiplication of the vector and a scalar s. Every element of the vector multiplies s.
+		Computing the multiplication of the 'VectorBase' and a 'scalar' <span>s</span>. Every element of the 'VectorBase' multiplies <span>s</span>.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>s:</span> The given scalar to multiply with the vector</p>
+        <p class = "arg"><span>s:</span> The given 'scalar' to multiply with the 'VectorBase'</p>
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The operation result whose type is VectorBase</p>
+        <p class = "arg"> The operation result whose type is 'VectorBase'</p>
 	</div>
 </div>
 
 <div class = "detail">
 	<div class = "definition">
-        friend VectorBase operator* (scalar s,const VectorBase&amp vec)
+        friend VectorBase operator*(scalar s,const VectorBase&amp vec)
 	</div>
 	<div class = "description">
-        This is the same function as "VectorBase operator* (scalar s)". 
+        This is the same function as "VectorBase operator*(scalar s)". 
 	</div>
 </div>
 
 <div class = "detail">
 	<div class = "definition">
-        VectorBase operator+(const VectorBase&amp vec) const
+        template&ltint S&gt</br>
+        VectorBase operator+(const VectorBase&ltscalar,index,S&gt&amp vec) const
 	</div>
 	<div class = "description">
-        This is the summation operation of VectorBase. The corresponding elements of the two vectors are added together.
+        This is the summation operation of 'VectorBase'. The corresponding elements of the two 'VectorBase's are added together.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>vec:</span> The given vector</p>
+        <p class = "arg"><span>vec:</span> The given 'VectorBase'</p>
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The operation result whose type is VectorBase</p>
+        <p class = "arg"> The operation result whose type is 'VectorBase'</p>
 	</div>
 </div>
 
 <div class = "detail">
 	<div class = "definition">
-        VectorBase operator-(const VectorBase&amp vec) const
+        template&ltint S&gt</br>
+        VectorBase operator-(const VectorBase&ltscalar,index,S&gt&amp vec) const
 	</div>
 	<div class = "description">
-        This is the subtraction operation of VectorBase. Every element of the first vector substracts the corresponding element of the given one.
+        This is the subtraction operation of 'VectorBase'. Every element of the first 'VectorBase' substracts the corresponding element of the given one.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>vec:</span> The given vector</p>
+        <p class = "arg"><span>vec:</span> The given 'VectorBase'</p>
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The operation result whose type is VectorBase</p>
+        <p class = "arg"> The operation result whose type is 'VectorBase'</p>
 	</div>
 </div>
 
@@ -500,12 +651,12 @@
         friend std::ostream&amp operator&lt&lt(std::ostream&amp os,const VectorBase&amp vec)
 	</div>
 	<div class = "description">
-        Overload of output stream of VectorBase. The output form is like [v[0],v[1],...,v[size-1]].
+        Overload of output stream of 'VectorBase'. The output form is like <span>[v[0],v[1],...,v[size-1]]</span>.
         <p class= "paragraph">
         Parameters:
         </p>
         <p class = "arg"><span>os:</span> The standard stream</p>
-        <p class = "arg"><span>vec:</span> The given vector</p>
+        <p class = "arg"><span>vec:</span> The given 'VectorBase'</p>
         <p class= "paragraph">
         Returns:
         </p>
@@ -518,16 +669,16 @@
         static VectorBase vecE(index size, index i)
 	</div>
 	<div class = "description">
-        This function generates a VectorBase with specific size whose (i+1)-th element is 1 while others are 0s. 
+        This function generates a 'VectorBase' with specific size whose (i+1)-th element is <span>1</span> while others are <span>0</span>s. 
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>size:</span> The size of the vector</p>
+        <p class = "arg"><span>size:</span> The size of the 'VectorBase'</p>
         <p class = "arg"><span>i:</span> The index of non-zero element</p>
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> The VectorBase generated</p>
+        <p class = "arg"> The 'VectorBase' generated</p>
 	</div>
 </div>
 
@@ -536,7 +687,7 @@
         static VectorBase vecE(index size, index i, const scalar s)
 	</div>
 	<div class = "description">
-        This function generates a VectorBase with specific size whose (i+1)-th element is s while others are 0s. 
+        This function generates a 'VectorBase' with specific size whose (i+1)-th element is <span>s</span> while others are <span>0</span>s. 
         <p class= "paragraph">
         Parameters:
         </p>
@@ -552,35 +703,35 @@
 
 <div class = "detail">
 	<div class = "definition">
-        MatrixBase&ltscalar,index&gt mulTrans(const VectorBase&amp vec) const
+        DMatrix mulTrans(const VectorBase&amp vec) const
 	</div>
 	<div class = "description">
-        This is the transpose operation of VectorBase. It multiplies the first VectorBase with the transpose of the second one.
+        This is the transpose operation of 'VectorBase'. It multiplies the first 'VectorBase' with the transpose of the second one.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>vec:</span> The given vector</p>
+        <p class = "arg"><span>vec:</span> The given 'VectorBase'</p>
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> A MatrixBase with m rows and n colunms if the first VectorBase is of size m and the second one is of size n.</p>
+        <p class = "arg"> A 'DMatrix'(= 'dynamic matrix') with <span>m</span> rows and <span>n</span> colunms if the first 'VectorBase' is of size <span>m</span> and the second one is of size <span>n</span>.</p>
 	</div>
 </div>
 
 <div class = "detail">
 	<div class = "definition">
-        VectorBase transMul(const MatrixBase&ltscalar,index&gt&amp mat) const
+        VectorBase transMul(const DMatrix&amp mat) const
 	</div>
 	<div class = "description">
-        This function transposes the MatrixBase and multiplies it with the VectorBase. Note that the size of the VectorBase must be equal to the row number of the MatrixBase.
+        This function transposes the 'DMatrix'(= 'dynamic matrix') and multiplies it with the 'VectorBase'. Note that the size of the 'VectorBase' must be equal to the row number of the 'MatrixBase'.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>mat:</span> The given matrix</p>
+        <p class = "arg"><span>mat:</span> The given 'DMatrix'(= 'dynamic matrix')</p>
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> A VectorBase of size n if the original MatrixBase is with n columns.</p>
+        <p class = "arg"> A 'VectorBase' of size <span>n</span> if the original 'DMatrix'(= 'dynamic matrix') is with <span>n</span> columns.</p>
 	</div>
 </div>
 
@@ -589,7 +740,7 @@
         VectorBase block(const std::set&ltindex&gt&amp indices) const
 	</div>
 	<div class = "description">
-        Vector blocking of the vector. The indices of blocking vector are given in std::set&ltindex&gt from C++ standard library. Notice that the elements of std::set&ltindex&gt are placed in order.
+        Vector blocking of the 'VectorBase'. The indices of blocking vector are given in std::set&ltindex&gt from C++ standard library. Notice that the elements of std::set&ltindex&gt are placed in order.
         <p class= "paragraph">
         Parameters:
         </p>
@@ -597,7 +748,7 @@
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> A VectorBase</p>
+        <p class = "arg"> The blocked 'VectorBase'</p>
 	</div>
 </div>
 
@@ -606,7 +757,7 @@
         VectorBase block(const std::vector&ltindex&gt&amp indices) const
 	</div>
 	<div class = "description">
-        Vector blocking of the vector. The indices are given std::vector&ltindex&gt from C++ standard library. Remember that the elements of std::vector&ltindex&gt are not forced to be in order. 
+        Vector blocking of the 'VectorBase'. The indices are given std::vector&ltindex&gt from C++ standard library. Remember that the elements of std::vector&ltindex&gt are not forced to be in order. 
         <p class= "paragraph">
         Parameters:
         </p>
@@ -614,7 +765,7 @@
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> A VectorBase</p>
+        <p class = "arg"> The blocked 'VectorBase'</p>
 	</div>
 </div>
 
@@ -628,13 +779,13 @@
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>bs:</span> The size of result vector</p>
+        <p class = "arg"><span>bs:</span> The size of result 'VectorBase'</p>
         <p class = "arg"><span>begin:</span> The begin iterator</p>
         <p class = "arg"><span>end:</span> The end iterator</p>
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> A VectorBase</p>
+        <p class = "arg"> The blocked 'VectorBase'</p>
 	</div>
 </div>
 
@@ -643,12 +794,12 @@
         void blockFromVector(const VectorBase&amp vec, const std::set&ltindex&gt&amp indices)
 	</div>
 	<div class = "description">
-        Blocking the vector from a given vector vec. The indices are given in std::set&ltindex&gt from C++ standard library.
+        Blocking the 'VectorBase' from a given 'VectorBase' <span>vec</span>. The indices are given in std::set&ltindex&gt from C++ standard library.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>vec:</span> The original vector</p>
-        <p class = "arg"><span>indices:</span> The indices of blocking vector. Notice that the elements of std::set&ltindex&gt are placed in order.</p>
+        <p class = "arg"><span>vec:</span> The original 'VectorBase'</p>
+        <p class = "arg"><span>indices:</span> The indices of blocking 'VectorBase'. Notice that the elements of std::set&ltindex&gt are placed in order.</p>
 	</div>
 </div>
 
@@ -657,12 +808,12 @@
         void blockFromVector(const VectorBase&amp vec, const std::vector&ltindex&gt&amp indices)
 	</div>
 	<div class = "description">
-        Blocking the vector from a given vector vec. The indices are given in std::vector&ltindex&gt from C++ standard library.
+        Blocking the 'VectorBase' from a given 'VectorBase' <span>vec</span>. The indices are given in std::vector&ltindex&gt from C++ standard library.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>vec:</span> The original vector</p>
-        <p class = "arg"><span>indices:</span> The indices of blocking vector. Remember that the elements of std::vector&ltindex&gt are not forced to be in order. </p>
+        <p class = "arg"><span>vec:</span> The original 'VectorBase'</p>
+        <p class = "arg"><span>indices:</span> The indices of blocking 'VectorBase'. Remember that the elements of std::vector&ltindex&gt are not forced to be in order. </p>
 	</div>
 </div>
 
@@ -672,12 +823,12 @@
 		void blockFromVector(const VectorBase&amp vec, const index bs, InputIterator begin, InputIterator end)
 	</div>
 	<div class = "description">
-		Blocking the vector from a given vector vec. The begin and end iterator are given.
+		Blocking the 'VectorBase' from a given 'VectorBase' <span>vec</span>. The begin and end iterator are given.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>vec:</span> The original vector</p>
-        <p class = "arg"><span>bs:</span> The size of result vector</p>
+        <p class = "arg"><span>vec:</span> The original 'VectorBase'</p>
+        <p class = "arg"><span>bs:</span> The size of result 'VectorBase'</p>
         <p class = "arg"><span>begin:</span> The begin iterator</p>
         <p class = "arg"><span>end:</span> The end iterator</p>
 	</div>
@@ -688,12 +839,12 @@
         void combine(const VectorBase&amp v1, const VectorBase&amp v2)
 	</div>
 	<div class = "description">
-        This is a function used to combine two vectors.
+        This is a function used to combine two 'VectorBase's.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>v1:</span> The first vector to be combined</p>
-        <p class = "arg"><span>v2:</span> The second vector to be combined</p>
+        <p class = "arg"><span>v1:</span> The first 'VectorBase' to be combined</p>
+        <p class = "arg"><span>v2:</span> The second 'VectorBase' to be combined</p>
 	</div>
 </div>
 
@@ -702,13 +853,13 @@
         static inline void stCombine(const VectorBase&amp v1, const VectorBase&amp v2, VectorBase&amp v)
 	</div>
 	<div class = "description">
-        This is a function used to combine two vectors and it takes output as a parameter.
+        This is a function used to combine two 'VectorBase's and it takes output as a parameter.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>v1:</span> The first vector to be combined</p>
-        <p class = "arg"><span>v2:</span> The second vector to be combined</p>
-        <p class = "arg"><span>[out]v:</span> Output vector of the function</p>
+        <p class = "arg"><span>v1:</span> The first 'VectorBase' to be combined</p>
+        <p class = "arg"><span>v2:</span> The second 'VectorBase' to be combined</p>
+        <p class = "arg"><span>[out]v:</span> Output 'VectorBase' of the function</p>
 	</div>
 </div>
 
@@ -717,15 +868,15 @@
         static inline VectorBase random(const index i)
 	</div>
 	<div class = "description">
-        This function generates a random VectorBase with size i.
+        This function generates a random 'VectorBase' with size <span>i</span>.
         <p class= "paragraph">
         Parameters:
         </p>
-        <p class = "arg"><span>i:</span> The size of the vector</p>
+        <p class = "arg"><span>i:</span> The size of the 'VectorBase'</p>
         <p class= "paragraph">
         Returns:
         </p>
-        <p class = "arg"> A random VectorBase with size i</p>
+        <p class = "arg"> A random 'VectorBase' with size <span>i</span></p>
 	</div>
 </div>
 {%endblock%}
